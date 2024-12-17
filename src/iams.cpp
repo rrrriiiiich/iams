@@ -1,6 +1,7 @@
 #include "iams.h"
 #include "ui_iams.h"
 #include <QDebug>
+#include <QMovie>
 
 /**
  * @brief iams 类的构造函数
@@ -10,6 +11,12 @@ iams::iams(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::iams)
 {
     ui->setupUi(this);
+
+    QMovie *movie = new QMovie("F://Embedded//Transportlayertraining//QT//iams//pic//lildog.gif");
+    movie->start();
+    ui->lildogLabel->setMovie(movie);
+    // 按图片比例缩小
+    ui->lildogLabel->setScaledContents(true);
 }
 
 /**

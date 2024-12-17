@@ -1,6 +1,7 @@
 #pragma once
 #include "ui_iams.h"
 #include <QMainWindow>
+#include <QMovie>
 
 QT_BEGIN_NAMESPACE
 namespace Ui
