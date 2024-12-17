@@ -1,5 +1,6 @@
 #pragma once
 #include "ui_iams.h"
+#include "second.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -41,4 +42,9 @@ private:
      * @brief 指向 Ui_iams 类的指针，用于访问和操作界面元素
      */
     Ui::iams *ui;
+
+    /**
+     * @brief 指向 second 类的指针，用于管理和操作第二个窗口
+     */
+    second *S1;
 };

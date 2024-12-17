@@ -6,12 +6,16 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 # QMAKE_LFLAGS += "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\""
 
 SOURCES += \
-    $$files($$PWD/src/*.cpp)
+    src/main.cpp \
+    src/iams.cpp \
+    src/second.cpp
 
 HEADERS += \
-    $$files($$PWD/src/*.h)
+    src/iams.h \
+    src/second.h
 
-FORMS += $$PWD/src/iams.ui
+FORMS += $$PWD/src/iams.ui \
+    src/second.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

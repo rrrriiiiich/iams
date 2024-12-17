@@ -1,7 +1,7 @@
 #include "iams.h"
 
 #include <QApplication>
-#pragma comment(lib, "user32.lib")
+// #pragma comment(lib, "user32.lib")
 
 /**
  * @brief 应用程序的入口点
