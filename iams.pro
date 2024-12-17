@@ -6,10 +6,11 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 # QMAKE_LFLAGS += "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\""
 
 SOURCES += \
-    $$files($$PWD/src/*.cpp)
+    src/main.cpp \
+    src/iams.cpp
 
 HEADERS += \
-    $$files($$PWD/src/*.h)
+    src/iams.h
 
 FORMS += $$PWD/src/iams.ui
 
