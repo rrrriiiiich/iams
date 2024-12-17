@@ -1,0 +1,5 @@
+# 忽略用户配置文件
+iams.pro.user
+
+# 忽略build目录
+build/*
