@@ -1,4 +1,4 @@
-#include "../headers/iams.h"
+#include "iams.h"
 #include "ui_iams.h"
 #include <QDebug>
 

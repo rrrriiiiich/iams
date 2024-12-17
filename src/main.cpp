@@ -1,4 +1,4 @@
-#include "../headers/iams.h"
+#include "iams.h"
 
 #include <QApplication>
 #pragma comment(lib, "user32.lib")
