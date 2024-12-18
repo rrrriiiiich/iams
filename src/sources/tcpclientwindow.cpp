@@ -1,4 +1,4 @@
-#include "tcpclientwindow.h"
+#include "tcpClientWindow.h"
 #include "ui_tcpclientwindow.h"
 #include <QDebug>
 #include <QTcpSocket>

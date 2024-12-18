@@ -1,7 +1,7 @@
 #pragma once
 #include "ui_iams.h"
-#include "tcpclientwindow.h"
-#include "tcpserverwindow.h"
+#include "tcpClientWindow.h"
+#include "tcpServerWindow.h"
 #include <QMainWindow>
 #include <QMovie>
 
