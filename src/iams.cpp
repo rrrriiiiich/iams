@@ -50,11 +50,11 @@ void iams::on_login_clicked()
         /* code */
         qDebug() << "登录成功";
 
-        // 隐藏当前窗口
-        this->hide();
-
         // 显示第二个窗口
         S1->show();
+
+        // 隐藏当前窗口
+        this->hide();
     }
     else
     {
