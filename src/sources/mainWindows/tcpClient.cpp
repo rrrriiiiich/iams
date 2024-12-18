@@ -1,7 +1,5 @@
 #include "tcpClient.h"
 #include "ui_tcpClient.h"
-#include <QDebug>
-#include <QTcpSocket>
 
 /**
  * @brief tcpClient 类的构造函数，初始化 tcpClient 窗口

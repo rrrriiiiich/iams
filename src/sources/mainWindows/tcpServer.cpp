@@ -22,6 +22,12 @@ void tcpServer::on_listenButton_clicked()
 {
     qtcpServer->listen(QHostAddress::Any, ui->portEdit->text().toInt());
 
+    qDebug() << "tcp server addresses:";
+    for (const tcpServerAddress &address : getAvailableNetworkAddresses())
+    {
+        qDebug() << address.name << ":" << address.address.toString();
+    }
+
     if (qtcpServer->isListening())
     {
         qDebug() << "listen success";

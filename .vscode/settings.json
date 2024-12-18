@@ -67,6 +67,7 @@
     "*.tcc": "cpp",
     "fstream": "cpp",
     "qdebug": "cpp",
-    "qtcpsocket": "cpp"
+    "qtcpsocket": "cpp",
+    "qnetworkinterface": "cpp"
   }
 }

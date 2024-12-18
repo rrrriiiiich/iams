@@ -1,7 +1,5 @@
 #include "iams.h"
 #include "ui_iams.h"
-#include <QDebug>
-#include <QMovie>
 
 /**
  * @brief iams 类的构造函数
