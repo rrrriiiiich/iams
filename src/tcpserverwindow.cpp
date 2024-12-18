@@ -54,3 +54,9 @@ void tcpServerWindow::on_sendButton_clicked()
     qDebug() << "send button clicked";
     tcpSocket->write(ui->sendPlainTextEdit->toPlainText().toUtf8());
 }
+
+void tcpServerWindow::on_backButton_clicked()
+{
+    this->parentWidget()->show();
+    this->close();
+}
