@@ -56,16 +56,19 @@ void second::on_connectButton_clicked()
     int port = ui->portEdit->text().trimmed().toInt();
     // 创建 TCP 连接
     tcpSocket->connectToHost(address, port);
+    qDebug() << "connect to host";
 }
 
 void second::on_sendButton_clicked()
 {
     // 发送数据
     tcpSocket->write(ui->sendEdit->text().trimmed().toUtf8());
+    qDebug() << "send data";
 }
 
 void second::readData()
 {
     // ui->recvLabel->setText(tcpSocket->readAll());
     ui->recvPlainTextEdit->appendPlainText(tcpSocket->readAll());
+    qDebug() << "read data";
 }

@@ -25,7 +25,7 @@ iams::iams(QWidget *parent)
     ui->usernameLineEdit->setText("admin");
     ui->passwordLineEdit->setText("123456");
 
-    TcpServer->show();
+    S1->show();
 }
 
 /**
