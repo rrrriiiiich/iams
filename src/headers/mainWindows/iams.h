@@ -1,7 +1,7 @@
 #pragma once
 #include "ui_iams.h"
-#include "tcpClientWindow.h"
-#include "tcpServerWindow.h"
+#include "tcpClient.h"
+#include "tcpServer.h"
 #include <QMainWindow>
 #include <QMovie>
 
@@ -50,12 +50,12 @@ private:
     Ui::iams *ui;
 
     /**
-     * @brief 指向 tcpClientWindow 类的指针，用于管理和操作第二个窗口
+     * @brief 指向 tcpClient 类的指针，用于管理和操作第二个窗口
      */
-    tcpClientWindow *TcpClient;
+    tcpClient *TcpClient;
 
     /**
-     * @brief 指向 tcpServerWindow 类的指针，用于管理和操作 tcpServerWindow 窗口
+     * @brief 指向 tcpServer 类的指针，用于管理和操作 tcpServer 窗口
      */
-    tcpServerWindow *TcpServer;
+    tcpServer *TcpServer;
 };

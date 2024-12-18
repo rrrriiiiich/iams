@@ -12,18 +12,22 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 
 # 指定源文件路径
 SOURCES += \
-    $$files($$PWD/src/sources/*.cpp)
+    $$files($$PWD/src/sources/*.cpp) \
+    $$files($$PWD/src/sources/mainWindows/*.cpp)
 
 # 自动包含 src 目录下的所有头文件
 HEADERS += \
-    $$files($$PWD/src/headers/*.h)
+    $$files($$PWD/src/headers/*.h) \
+    $$files($$PWD/src/headers/mainWindows/*.h)
     
 # 添加头文件路径
-INCLUDEPATH += $$PWD/src/headers
+INCLUDEPATH += $$PWD/src/headers \
+    $$PWD/src/headers/mainWindows
 
 # 指定 UI 文件路径
 FORMS += \
-    $$files($$PWD/src/forms/*.ui)
+    $$files($$PWD/src/forms/*.ui) \
+    $$files($$PWD/src/forms/mainWindows/*.ui)
     
 
 # 设置默认的部署规则

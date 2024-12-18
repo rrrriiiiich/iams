@@ -19,8 +19,8 @@ iams::iams(QWidget *parent)
     // 按图片比例缩小
     ui->lildogLabel->setScaledContents(true);
 
-    TcpClient = new tcpClientWindow(this);
-    TcpServer = new tcpServerWindow(this);
+    TcpClient = new tcpClient(this);
+    TcpServer = new tcpServer(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");

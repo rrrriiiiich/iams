@@ -1,23 +1,23 @@
-#include "tcpClientWindow.h"
-#include "ui_tcpclientwindow.h"
+#include "tcpClient.h"
+#include "ui_tcpClient.h"
 #include <QDebug>
 #include <QTcpSocket>
 
 /**
- * @brief tcpclientwindow 类的构造函数，初始化 tcpclientwindow 窗口
+ * @brief tcpClient 类的构造函数，初始化 tcpClient 窗口
  * @param parent 父窗口指针，默认为 nullptr
  */
-tcpClientWindow::tcpClientWindow(QWidget *parent) : QMainWindow(parent),
-                                                    ui(new Ui::tcpClientWindow)
+tcpClient::tcpClient(QWidget *parent) : QMainWindow(parent),
+                                        ui(new Ui::tcpClient)
 {
     // 初始化 UI
     ui->setupUi(this);
 
     // 创建 TCP 连接
-    tcpSocket = new QTcpSocket(this);
+    qtcpSocket = new QTcpSocket(this);
 
     // 连接槽函数
-    connect(tcpSocket, &QTcpSocket::readyRead, this, &tcpClientWindow::readData);
+    connect(qtcpSocket, &QTcpSocket::readyRead, this, &tcpClient::readData);
 
     // 方便调试 将edit的内容设置默认值
     // ui->addressEdit->setText("192.168.1.159");
@@ -28,9 +28,9 @@ tcpClientWindow::tcpClientWindow(QWidget *parent) : QMainWindow(parent),
 }
 
 /**
- * @brief tcpclientwindow 类的析构函数，释放 tcpclientwindow 窗口占用的资源
+ * @brief tcpClient 类的析构函数，释放 tcpClient 窗口占用的资源
  */
-tcpClientWindow::~tcpClientWindow()
+tcpClient::~tcpClient()
 {
     // 释放 UI 资源
     delete ui;
@@ -40,7 +40,7 @@ tcpClientWindow::~tcpClientWindow()
  * @brief 当返回按钮被点击时调用的槽函数
  * 该函数会关闭当前窗口并返回上一个窗口
  */
-void tcpClientWindow::on_backButton_clicked()
+void tcpClient::on_backButton_clicked()
 {
     qDebug() << "on_backButton_clicked";
 
@@ -51,25 +51,25 @@ void tcpClientWindow::on_backButton_clicked()
     this->close();
 }
 
-void tcpClientWindow::on_connectButton_clicked()
+void tcpClient::on_connectButton_clicked()
 {
     QString address = ui->addressEdit->text().trimmed();
     int port = ui->portEdit->text().trimmed().toInt();
     // 创建 TCP 连接
-    tcpSocket->connectToHost(address, port);
+    qtcpSocket->connectToHost(address, port);
     qDebug() << "connect to host";
 }
 
-void tcpClientWindow::on_sendButton_clicked()
+void tcpClient::on_sendButton_clicked()
 {
     // 发送数据
-    tcpSocket->write(ui->sendEdit->text().trimmed().toUtf8());
+    qtcpSocket->write(ui->sendEdit->text().trimmed().toUtf8());
     qDebug() << "send data";
 }
 
-void tcpClientWindow::readData()
+void tcpClient::readData()
 {
     // ui->recvLabel->setText(tcpSocket->readAll());
-    ui->recvPlainTextEdit->appendPlainText(tcpSocket->readAll());
+    ui->recvPlainTextEdit->appendPlainText(qtcpSocket->readAll());
     qDebug() << "read data";
 }

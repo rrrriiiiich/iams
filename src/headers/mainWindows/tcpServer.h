@@ -1,5 +1,5 @@
-#ifndef TCPSERVERWINDOW_H
-#define TCPSERVERWINDOW_H
+#ifndef tcpServer_H
+#define tcpServer_H
 
 #include <QMainWindow>
 #include <QDebug>
@@ -8,16 +8,16 @@
 
 namespace Ui
 {
-    class tcpServerWindow;
+    class tcpServer;
 }
 
-class tcpServerWindow : public QMainWindow
+class tcpServer : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit tcpServerWindow(QWidget *parent = nullptr);
-    ~tcpServerWindow();
+    explicit tcpServer(QWidget *parent = nullptr);
+    ~tcpServer();
 
 private slots:
     void on_listenButton_clicked();
@@ -31,10 +31,10 @@ private slots:
     void on_backButton_clicked();
 
 private:
-    Ui::tcpServerWindow *ui;
+    Ui::tcpServer *ui;
 
-    QTcpServer *tcpServer;
-    QTcpSocket *tcpSocket;
+    QTcpServer *qtcpServer;
+    QTcpSocket *qtcpSocket;
 };
 
-#endif // TCPSERVERWINDOW_H
+#endif // tcpServer_H
