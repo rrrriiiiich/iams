@@ -41,23 +41,31 @@ void iams::on_cancel_clicked()
 void iams::on_login_clicked()
 {
     qDebug() << "登录按钮槽函数";
-    // 获取username 和 password 的值
-    QString username = ui->usernameLineEdit->text();
-    QString password = ui->passwordLineEdit->text();
+    // 获取并去除首尾空格，防止用户误输入空格导致登录失败
+    QString username = ui->usernameLineEdit->text().trimmed();
+    QString password = ui->passwordLineEdit->text().trimmed();
 
-    if (username == "admin" && password == "123456")
+    // 添加输入验证，避免空用户名或密码
+    if (username.isEmpty() || password.isEmpty())
     {
-        /* code */
+        qDebug() << "用户名或密码不能为空";
+        return;
+    }
+
+    // 使用常量存储凭据，便于后期维护和修改
+    const QString VALID_USERNAME = "admin";
+    const QString VALID_PASSWORD = "123456";
+
+    if (username == VALID_USERNAME && password == VALID_PASSWORD)
+    {
         qDebug() << "登录成功";
 
-        // 显示第二个窗口
+        // 先显示新窗口再隐藏当前窗口，避免界面闪烁
         S1->show();
-
-        // 隐藏当前窗口
         this->hide();
     }
     else
     {
-        qDebug() << "登录失败";
+        qDebug() << "登录失败：用户名或密码错误";
     }
 }

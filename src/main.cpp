@@ -11,8 +11,15 @@
  */
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv); // 创建 QApplication 对象，用于管理应用程序的事件循环
-    iams w;                     // 创建 iams 窗口对象
-    w.show();                   // 显示 iams 窗口
-    return a.exec();            // 进入事件循环，等待用户操作并处理事件
+    // 创建应用程序对象
+    QApplication a(argc, argv);
+
+    // 创建主窗口
+    iams w;
+
+    // 显示主窗口
+    w.show();
+
+    // 运行应用程序并返回退出码
+    return a.exec();
 }
