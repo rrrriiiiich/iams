@@ -57,7 +57,7 @@
       <item>
        <widget class="QLineEdit" name="portEdit">
         <property name="text">
-         <string>8080</string>
+         <string>3777</string>
         </property>
        </widget>
       </item>
@@ -104,4 +104,3 @@
  <resources/>
  <connections/>
 </ui>
-
