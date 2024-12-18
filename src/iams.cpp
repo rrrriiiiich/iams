@@ -17,6 +17,8 @@ iams::iams(QWidget *parent)
     ui->lildogLabel->setMovie(movie);
     // 按图片比例缩小
     ui->lildogLabel->setScaledContents(true);
+
+    S1 = new second(this);
 }
 
 /**
@@ -47,6 +49,12 @@ void iams::on_login_clicked()
     {
         /* code */
         qDebug() << "登录成功";
+
+        // 隐藏当前窗口
+        this->hide();
+
+        // 显示第二个窗口
+        S1->show();
     }
     else
     {

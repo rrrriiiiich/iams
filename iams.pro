@@ -7,12 +7,14 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 
 SOURCES += \
     src/main.cpp \
-    src/iams.cpp
+    src/iams.cpp \
+    src/second.cpp
 
 HEADERS += \
-    src/iams.h
+    $$files($$PWD/src/*.h)
 
-FORMS += $$PWD/src/iams.ui
+FORMS += $$PWD/src/iams.ui \
+    src/second.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
