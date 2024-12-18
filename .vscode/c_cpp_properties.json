@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/**",
                 "${workspaceFolder}",
-                "${workspaceFolder}/build"
+                "${workspaceFolder}/build",
+                "${workspaceFolder}/src/headers"
             ],
             "cStandard": "${default}",
             "cppStandard": "${default}",

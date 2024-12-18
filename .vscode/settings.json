@@ -66,6 +66,7 @@
     "new": "cpp",
     "*.tcc": "cpp",
     "fstream": "cpp",
-    "qdebug": "cpp"
+    "qdebug": "cpp",
+    "qtcpsocket": "cpp"
   }
 }

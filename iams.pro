@@ -12,15 +12,18 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 
 # 指定源文件路径
 SOURCES += \
-    $$files($$PWD/src/*.cpp)
+    $$files($$PWD/src/sources/*.cpp)
 
 # 自动包含 src 目录下的所有头文件
 HEADERS += \
-    $$files($$PWD/src/*.h)
+    $$files($$PWD/src/headers/*.h)
+    
+# 添加头文件路径
+INCLUDEPATH += $$PWD/src/headers
 
 # 指定 UI 文件路径
 FORMS += \
-    $$files($$PWD/src/*.ui)
+    $$files($$PWD/src/forms/*.ui)
     
 
 # 设置默认的部署规则
@@ -36,3 +39,5 @@ RESOURCES += \
 
 # 添加网络模块
 QT += network
+
+
