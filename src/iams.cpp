@@ -19,10 +19,13 @@ iams::iams(QWidget *parent)
     ui->lildogLabel->setScaledContents(true);
 
     S1 = new second(this);
+    TcpServer = new tcpServerWindow(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
     ui->passwordLineEdit->setText("123456");
+
+    TcpServer->show();
 }
 
 /**

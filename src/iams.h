@@ -1,6 +1,7 @@
 #pragma once
 #include "ui_iams.h"
 #include "second.h"
+#include "tcpserverwindow.h"
 #include <QMainWindow>
 #include <QMovie>
 
@@ -48,4 +49,9 @@ private:
      * @brief 指向 second 类的指针，用于管理和操作第二个窗口
      */
     second *S1;
+
+    /**
+     * @brief 指向 tcpServerWindow 类的指针，用于管理和操作 tcpServerWindow 窗口
+     */
+    tcpServerWindow *TcpServer;
 };
