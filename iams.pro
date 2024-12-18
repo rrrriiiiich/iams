@@ -12,19 +12,16 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 
 # 指定源文件路径
 SOURCES += \
-    src/main.cpp \
-    src/iams.cpp \
-    src/tcpclientwindow.cpp \
-    src/tcpserverwindow.cpp
+    $$files($$PWD/src/*.cpp)
 
 # 自动包含 src 目录下的所有头文件
 HEADERS += \
     $$files($$PWD/src/*.h)
 
 # 指定 UI 文件路径
-FORMS += $$PWD/src/iams.ui \
-    src/tcpclientwindow.ui \
-    src/tcpserverwindow.ui
+FORMS += \
+    $$files($$PWD/src/*.ui)
+    
 
 # 设置默认的部署规则
 qnx: target.path = /tmp/$${TARGET}/bin
