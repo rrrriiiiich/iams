@@ -12,9 +12,10 @@ iams::iams(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QMovie *movie = new QMovie("F://Embedded//Transportlayertraining//QT//iams//pic//lildog.gif");
-    movie->start();
+    QMovie *movie = new QMovie(":/pic/lildog.gif");
     ui->lildogLabel->setMovie(movie);
+    movie->start();
+
     // 按图片比例缩小
     ui->lildogLabel->setScaledContents(true);
 
