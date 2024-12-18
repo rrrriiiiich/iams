@@ -20,8 +20,8 @@ second::second(QWidget *parent) : QMainWindow(parent),
     connect(tcpSocket, &QTcpSocket::readyRead, this, &second::readData);
 
     // 方便调试 将edit的内容设置默认值
-    ui->addressEdit->setText("192.168.1.153");
-    ui->portEdit->setText("8080");
+    ui->addressEdit->setText("192.168.1.159");
+    ui->portEdit->setText("53353");
 
     ui->sendEdit->setText("你好 服务端");
 }
