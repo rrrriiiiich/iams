@@ -42,7 +42,7 @@ iams::~iams()
 void iams::on_cancel_clicked()
 {
     qDebug() << "取消按钮槽函数";
-    this->close();
+    this->hide();
 }
 
 void iams::on_login_clicked()

@@ -24,11 +24,11 @@ void tcpServerWindow::on_listenButton_clicked()
 
     if (tcpServer->isListening())
     {
-        qDebug() << "监听成功";
+        qDebug() << "listen success";
     }
     else
     {
-        qDebug() << "监听失败";
+        qDebug() << "listen fail";
     }
 
     connect(tcpServer, &QTcpServer::newConnection, this, &tcpServerWindow::on_newConnection);
@@ -36,7 +36,7 @@ void tcpServerWindow::on_listenButton_clicked()
 
 void tcpServerWindow::on_newConnection()
 {
-    qDebug() << "新连接";
+    qDebug() << "new connection";
 
     tcpSocket = tcpServer->nextPendingConnection();
 
@@ -45,12 +45,12 @@ void tcpServerWindow::on_newConnection()
 
 void tcpServerWindow::readData()
 {
-    qDebug() << "接收到数据";
+    qDebug() << "read data";
     ui->recvTextEdit->appendPlainText(tcpSocket->readAll());
 }
 
 void tcpServerWindow::on_sendButton_clicked()
 {
-    qDebug() << "发送数据";
+    qDebug() << "send button clicked";
     tcpSocket->write(ui->sendPlainTextEdit->toPlainText().toUtf8());
 }
