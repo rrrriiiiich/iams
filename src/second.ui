@@ -105,6 +105,9 @@
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
+      <property name="placeholderText">
+       <string>请输入待发送的文本</string>
+      </property>
      </widget>
     </item>
     <item>
@@ -112,7 +115,7 @@
       <item>
        <spacer name="horizontalSpacer_3">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -131,7 +134,7 @@
       <item>
        <spacer name="horizontalSpacer">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -163,18 +166,15 @@
      </layout>
     </item>
     <item>
-     <widget class="QLabel" name="recvLabel">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <widget class="QPlainTextEdit" name="recvPlainTextEdit">
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
-      <property name="text">
-       <string>recvLabel</string>
+      <property name="plainText">
+       <string/>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      <property name="placeholderText">
+       <string>显示服务端发送内容</string>
       </property>
      </widget>
     </item>

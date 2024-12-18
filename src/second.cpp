@@ -66,5 +66,6 @@ void second::on_sendButton_clicked()
 
 void second::readData()
 {
-    ui->recvLabel->setText(tcpSocket->readAll());
+    // ui->recvLabel->setText(tcpSocket->readAll());
+    ui->recvPlainTextEdit->appendPlainText(tcpSocket->readAll());
 }
