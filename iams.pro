@@ -34,3 +34,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 # 指定资源文件路径
 RESOURCES += \
     pic.qrc
+
+# 添加网络模块
+QT += network

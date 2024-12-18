@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QTcpSocket>
 
 namespace Ui
 {
@@ -35,8 +36,21 @@ private slots:
      */
     void on_backButton_clicked();
 
+    /**
+     * @brief 当连接按钮被点击时调用的槽函数
+     */
+    void on_connectButton_clicked();
+
+    /**
+     * @brief 当发送按钮被点击时调用的槽函数
+     */
+    void on_sendButton_clicked();
+
+    void readData();
+
 private:
     Ui::second *ui; // 指向 second 窗口的 UI 类的指针
+    QTcpSocket *tcpSocket;
 };
 
 #endif // SECOND_H
