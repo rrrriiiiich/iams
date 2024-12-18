@@ -21,7 +21,7 @@ second::second(QWidget *parent) : QMainWindow(parent),
 
     // 方便调试 将edit的内容设置默认值
     ui->addressEdit->setText("192.168.1.159");
-    ui->portEdit->setText("57864");
+    ui->portEdit->setText("3777");
 
     ui->sendEdit->setText("你好 服务端");
 }
