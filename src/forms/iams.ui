@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>iams</string>
+   <string>智慧农业监控系统</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
