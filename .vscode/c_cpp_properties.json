@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/**",
-                "${workspaceFolder}"
+                "${workspaceFolder}",
+                "${workspaceFolder}/build"
             ],
             "cStandard": "${default}",
             "cppStandard": "${default}",
