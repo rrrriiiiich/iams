@@ -14,7 +14,7 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 SOURCES += \
     src/main.cpp \
     src/iams.cpp \
-    src/second.cpp \
+    src/tcpclientwindow.cpp \
     src/tcpserverwindow.cpp
 
 # 自动包含 src 目录下的所有头文件
@@ -23,7 +23,7 @@ HEADERS += \
 
 # 指定 UI 文件路径
 FORMS += $$PWD/src/iams.ui \
-    src/second.ui \
+    src/tcpclientwindow.ui \
     src/tcpserverwindow.ui
 
 # 设置默认的部署规则

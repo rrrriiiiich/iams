@@ -1,5 +1,5 @@
-#ifndef SECOND_H
-#define SECOND_H
+#ifndef TCPCLIENTWINDOW_H
+#define TCPCLIENTWINDOW_H
 
 #include <QMainWindow>
 #include <QDebug>
@@ -7,27 +7,27 @@
 
 namespace Ui
 {
-    class second;
+    class tcpClientWindow;
 }
 
 /**
- * @brief second 类定义了一个继承自 QMainWindow 的窗口，用于显示第二个界面
+ * @brief tcpClientWindow 类定义了一个继承自 QMainWindow 的窗口，用于显示第二个界面
  */
-class second : public QMainWindow
+class tcpClientWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     /**
-     * @brief 构造函数，初始化 second 窗口
+     * @brief 构造函数，初始化 tcpClientWindow 窗口
      * @param parent 父窗口指针，默认为 nullptr
      */
-    explicit second(QWidget *parent = nullptr);
+    explicit tcpClientWindow(QWidget *parent = nullptr);
 
     /**
-     * @brief 析构函数，释放 second 窗口占用的资源
+     * @brief 析构函数，释放 tcpClientWindow 窗口占用的资源
      */
-    ~second();
+    ~tcpClientWindow();
 
 private slots:
     /**
@@ -49,8 +49,8 @@ private slots:
     void readData();
 
 private:
-    Ui::second *ui; // 指向 second 窗口的 UI 类的指针
+    Ui::tcpClientWindow *ui; // 指向 tcpClientWindow 窗口的 UI 类的指针
     QTcpSocket *tcpSocket;
 };
 
-#endif // SECOND_H
+#endif // TCPCLIENTWINDOW_H

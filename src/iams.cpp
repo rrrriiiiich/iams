@@ -18,14 +18,12 @@ iams::iams(QWidget *parent)
     // 按图片比例缩小
     ui->lildogLabel->setScaledContents(true);
 
-    S1 = new second(this);
+    TcpClient = new tcpClientWindow(this);
     TcpServer = new tcpServerWindow(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
     ui->passwordLineEdit->setText("123456");
-
-    S1->show();
 }
 
 /**
@@ -55,7 +53,7 @@ void iams::on_login_clicked()
     // 添加输入验证，避免空用户名或密码
     if (username.isEmpty() || password.isEmpty())
     {
-        qDebug() << "用户名或密码不能为空";
+        qDebug() << "login failed: username or password is empty";
         return;
     }
 
@@ -65,14 +63,24 @@ void iams::on_login_clicked()
 
     if (username == VALID_USERNAME && password == VALID_PASSWORD)
     {
-        qDebug() << "登录成功";
+        qDebug() << "login success";
 
         // 先显示新窗口再隐藏当前窗口，避免界面闪烁
-        S1->show();
-        this->hide();
+        // S1->show();
+        // this->hide();
     }
     else
     {
-        qDebug() << "登录失败：用户名或密码错误";
+        qDebug() << "login failed: username or password is wrong";
     }
+}
+
+void iams::on_tcpcServerBt_clicked()
+{
+    TcpServer->show();
+}
+
+void iams::on_tcpClientBt_clicked()
+{
+    TcpClient->show();
 }

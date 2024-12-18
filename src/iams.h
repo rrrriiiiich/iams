@@ -1,6 +1,6 @@
 #pragma once
 #include "ui_iams.h"
-#include "second.h"
+#include "tcpclientwindow.h"
 #include "tcpserverwindow.h"
 #include <QMainWindow>
 #include <QMovie>
@@ -39,6 +39,10 @@ private slots:
      */
     void on_login_clicked();
 
+    void on_tcpcServerBt_clicked();
+
+    void on_tcpClientBt_clicked();
+
 private:
     /**
      * @brief 指向 Ui_iams 类的指针，用于访问和操作界面元素
@@ -46,9 +50,9 @@ private:
     Ui::iams *ui;
 
     /**
-     * @brief 指向 second 类的指针，用于管理和操作第二个窗口
+     * @brief 指向 tcpClientWindow 类的指针，用于管理和操作第二个窗口
      */
-    second *S1;
+    tcpClientWindow *TcpClient;
 
     /**
      * @brief 指向 tcpServerWindow 类的指针，用于管理和操作 tcpServerWindow 窗口
