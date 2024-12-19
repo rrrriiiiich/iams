@@ -12,3 +12,36 @@ QMAKE_DEFAULT_LIBDIRS = \
     /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/lib \
     /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/lib \
     /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/lib
+QMAKE_CXX.QT_COMPILER_STDCXX = 201402L
+QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 7
+QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 3
+QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 0
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_GCC_MAJOR_VERSION \
+    QMAKE_GCC_MINOR_VERSION \
+    QMAKE_GCC_PATCH_VERSION
+QMAKE_CXX.INCDIRS = \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward \
+    /usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include \
+    /usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/x86_64-w64-mingw32/include
+QMAKE_CXX.LIBDIRS = \
+    /usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0 \
+    /usr/local/cross/gec6818-5.4.0/usr/lib/gcc \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/lib \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/lib \
+    /usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/lib \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0 \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib/gcc \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/x86_64-w64-mingw32/lib \
+    D:/Qt/Qt5.14.2/Tools/mingw730_64/lib

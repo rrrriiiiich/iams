@@ -19,7 +19,7 @@ void httpTest::on_requestButton_clicked()
     QUrl url = ui->urlEdit->text();
     qDebug() << "httpTest: url: " << url;
     // 发送请求获取响应
-    sendRequest(url, {});
+    sendRequest(url);
 }
 
 void httpTest::on_showButton_clicked()
