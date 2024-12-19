@@ -2,8 +2,9 @@
 #define tcpClient_H
 
 #include <QMainWindow>
-#include <QDebug>
 #include <QTcpSocket>
+
+#include "systemLog.h"
 
 namespace Ui
 {

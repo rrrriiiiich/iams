@@ -5,6 +5,7 @@
 #include "udpMW.h"
 #include "dashboard.h"
 #include "httpTest.h"
+#include "systemLog.h"
 
 #include <QMainWindow>
 #include <QMovie>

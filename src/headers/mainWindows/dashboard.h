@@ -2,6 +2,7 @@
 #define DASHBOARD_H
 
 #include <QMainWindow>
+#include "systemLog.h"
 
 namespace Ui
 {

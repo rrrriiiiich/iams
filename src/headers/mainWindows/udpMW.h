@@ -2,8 +2,9 @@
 #define UDPMW_H
 
 #include <QMainWindow>
-#include <QDebug>
 #include <QUdpSocket>
+
+#include "systemLog.h"
 
 namespace Ui
 {

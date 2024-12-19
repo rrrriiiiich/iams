@@ -2,8 +2,9 @@
 #define HTTPTEST_H
 
 #include <QMainWindow>
-#include <QDebug>
+
 #include "sendRequest.h"
+#include "systemLog.h"
 
 namespace Ui
 {
@@ -18,12 +19,9 @@ public:
     explicit httpTest(QWidget *parent = nullptr);
     ~httpTest();
 
-    void getRequest(QUrl url);
-
 private:
     Ui::httpTest *ui;
 
-    QNetworkAccessManager *request;
     QUrl url;
 
     NetworkManager *manager;

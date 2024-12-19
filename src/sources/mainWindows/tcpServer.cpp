@@ -18,7 +18,7 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
     // 将getAvailableNetworkAddresses返回的地址放到下拉框中
     for (const tcpServerAddress &address : getAvailableNetworkAddresses())
     {
-        // qDebug() << address.name << ":" << address.address.toString();
+        // SYSTEMLog() << address.name << ":" << address.address.toString();
         ui->addressComboBox->addItem(address.name + ": " + address.address.toString(), QVariant::fromValue(address));
     }
 
@@ -48,28 +48,28 @@ void tcpServer::on_listenButton_clicked()
         address = ui->addressComboBox->itemData(0).value<tcpServerAddress>().address;
     }
 
-    qDebug() << "address:" << address.toString();
+    SYSTEMLog() << "address:" << address.toString();
     qtcpServer->listen(address, ui->portEdit->text().toInt());
     if (qtcpServer->isListening())
     {
-        qDebug() << "tpc server: listen success";
+        SYSTEMLog() << "listen success";
 
         // 获取本地地址和端口
         QString localAddress = qtcpServer->serverAddress().toString();
         quint16 localPort = qtcpServer->serverPort();
 
-        qDebug() << "服务器实际监听地址:" << localAddress;
-        qDebug() << "服务器实际监听端口:" << localPort;
+        SYSTEMLog() << "服务器实际监听地址:" << localAddress;
+        SYSTEMLog() << "服务器实际监听端口:" << localPort;
     }
     else
     {
-        qDebug() << "tpc server: listen fail";
+        SYSTEMLog() << "listen fail";
     }
 }
 
 void tcpServer::on_newConnection()
 {
-    qDebug() << "tpc server: new connection";
+    SYSTEMLog() << "new connection";
 
     qtcpSocket = qtcpServer->nextPendingConnection();
 
@@ -80,14 +80,14 @@ void tcpServer::readData()
 {
     // 获取数据
     QString data = QString::fromUtf8(qtcpSocket->readAll());
-    qDebug() << "tpc server: read: " << data;
+    SYSTEMLog() << "read: " << data;
     ui->recvTextEdit->appendPlainText(data);
 }
 
 void tcpServer::on_sendButton_clicked()
 {
     QString data = ui->sendPlainTextEdit->toPlainText();
-    qDebug() << "tpc server: send: " << data;
+    SYSTEMLog() << "send: " << data;
     qtcpSocket->write(data.toUtf8());
 }
 

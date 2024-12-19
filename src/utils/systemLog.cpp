@@ -23,3 +23,4 @@ SystemLogger &SystemLogger::operator<<(const QString &message)
 }
 
 #define SYSTEMLog(...) SystemLogger(__FILE__, __LINE__) << (QString(__VA_ARGS__).isEmpty() ? "" : QString(__VA_ARGS__))
+

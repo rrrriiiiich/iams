@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QDebug>
+#include <QVariant>
 
 /**
  * @brief 输出日志信息到控制台
@@ -38,6 +39,50 @@ public:
    * @return SystemLogger& 返回自身引用以支持链式调用
    */
   SystemLogger &operator<<(const QString &message);
+
+  /**
+   * @brief 模板函数，用于处理任何可以转换为QString的类型
+   * @tparam T 类型参数
+   * @param value 要追加的值
+   * @return SystemLogger& 返回自身引用以支持链式调用
+   */
+  template <typename T>
+  SystemLogger &operator<<(const T &value)
+  {
+    QVariant var(value);
+    QString strValue;
+
+    // 检查是否可以转换为QString
+    if (var.canConvert<QString>())
+    {
+      strValue = var.toString();
+    }
+    else if (var.canConvert<int>())
+    {
+      strValue = QString::number(var.toInt());
+    }
+    else if (var.canConvert<double>())
+    {
+      strValue = QString::number(var.toDouble());
+    }
+    else if (var.canConvert<qlonglong>())
+    {
+      strValue = QString::number(var.toLongLong());
+    }
+    else if (var.canConvert<qulonglong>())
+    {
+      strValue = QString::number(var.toULongLong());
+    }
+    else
+    {
+      // 对于无法直接转换为QString的类型，使用qDebug()输出并转换为QString
+      qDebug() << "不支持的类型：" << var.typeName();
+    }
+
+    m_message = m_message.isEmpty() ? strValue : m_message + " " + strValue;
+
+    return *this;
+  }
 
 private:
   const char *m_file; ///< 源文件名
