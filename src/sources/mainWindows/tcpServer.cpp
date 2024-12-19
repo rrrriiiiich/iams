@@ -18,7 +18,7 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
     // 将getAvailableNetworkAddresses返回的地址放到下拉框中
     for (const tcpServerAddress &address : getAvailableNetworkAddresses())
     {
-        qDebug() << address.name << ":" << address.address.toString();
+        // qDebug() << address.name << ":" << address.address.toString();
         ui->addressComboBox->addItem(address.name + ": " + address.address.toString(), QVariant::fromValue(address));
     }
 }

@@ -2,6 +2,7 @@
 #define UDPMW_H
 
 #include <QMainWindow>
+#include <QDebug>
 
 namespace Ui
 {
@@ -18,6 +19,10 @@ public:
 
 private slots:
     void on_backButton_clicked();
+
+    void on_bindButton_clicked();
+
+    void on_sendButton_clicked();
 
 private:
     Ui::udpMW *ui;
