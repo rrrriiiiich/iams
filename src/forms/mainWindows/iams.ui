@@ -379,6 +379,13 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="httpTestButton">
+        <property name="text">
+         <string>httpTest</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="udpTestBt">
         <property name="text">
          <string>udpTest</string>

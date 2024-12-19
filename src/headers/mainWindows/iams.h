@@ -4,6 +4,7 @@
 #include "tcpServer.h"
 #include "udpMW.h"
 #include "dashboard.h"
+#include "httpTest.h"
 
 #include <QMainWindow>
 #include <QMovie>
@@ -48,6 +49,8 @@ private slots:
 
     void on_udpTestBt_clicked();
 
+    void on_httpTestButton_clicked();
+
 private:
     /**
      * @brief 指向 Ui_iams 类的指针，用于访问和操作界面元素
@@ -73,4 +76,9 @@ private:
      * @brief   指向 dashboard 类的指针，用于管理和操作 dashboard 窗口
      */
     dashboard *Dashboard;
+
+    /**
+     * @brief   指向 httpTest 类的指针，用于管理和操作 httpTest 窗口
+     */
+    httpTest *HttpTest;
 };

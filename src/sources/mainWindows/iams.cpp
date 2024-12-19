@@ -21,6 +21,7 @@ iams::iams(QWidget *parent)
     TcpServer = new tcpServer(this);
     UdpMW = new udpMW(this);
     Dashboard = new dashboard(this);
+    HttpTest = new httpTest(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
@@ -87,4 +88,9 @@ void iams::on_tcpClientBt_clicked()
 void iams::on_udpTestBt_clicked()
 {
     UdpMW->show();
+}
+
+void iams::on_httpTestButton_clicked()
+{
+    HttpTest->show();
 }
