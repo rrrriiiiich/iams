@@ -21,6 +21,9 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
         // qDebug() << address.name << ":" << address.address.toString();
         ui->addressComboBox->addItem(address.name + ": " + address.address.toString(), QVariant::fromValue(address));
     }
+
+    // 连接槽函数
+    connect(qtcpServer, &QTcpServer::newConnection, this, &tcpServer::on_newConnection);
 }
 
 tcpServer::~tcpServer()
@@ -62,8 +65,6 @@ void tcpServer::on_listenButton_clicked()
     {
         qDebug() << "tpc server: listen fail";
     }
-
-    connect(qtcpServer, &QTcpServer::newConnection, this, &tcpServer::on_newConnection);
 }
 
 void tcpServer::on_newConnection()

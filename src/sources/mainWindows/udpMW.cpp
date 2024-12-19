@@ -7,6 +7,8 @@ udpMW::udpMW(QWidget *parent) : QMainWindow(parent),
     ui->setupUi(this);
 
     udpsocket = new QUdpSocket(this);
+
+    connect(udpsocket, &QUdpSocket::readyRead, this, &udpMW::on_readData);
 }
 
 udpMW::~udpMW()
@@ -22,13 +24,12 @@ void udpMW::on_backButton_clicked()
 
 void udpMW::on_bindButton_clicked()
 {
+
     // 版本一：绑定端口为 50000
     // udpsocket->bind(ui->portEdit->text().toInt());
     // // 版本二：指定ip地址和端口进行绑定
     udpsocket->bind(QHostAddress(ui->addressEdit->text()), ui->portEdit->text().toInt());
     qDebug() << "bind: " << ui->addressEdit->text() << ":" << ui->portEdit->text();
-
-    connect(udpsocket, &QUdpSocket::readyRead, this, &udpMW::on_readData);
 }
 
 void udpMW::on_readData()
@@ -40,6 +41,7 @@ void udpMW::on_readData()
     quint16 senderPort;
     udpsocket->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
     qDebug() << "read: " << datagram;
+    // qDebug() << "read: " << datagram.data();
     ui->recvPlainTextEdit->appendPlainText(sender.toString() + ":" + QString::number(senderPort) + ": " + datagram);
 }
 

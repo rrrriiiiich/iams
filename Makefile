@@ -15,7 +15,7 @@ CXX           = arm-linux-g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -march=armv7-a -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -march=armv7-a -march=armv7-a -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I. -I. -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++
+INCPATH       = -I. -Isrc/headers -Isrc/headers/mainWindows -Isrc/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I. -I. -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++
 QMAKE         = /usr/local/Qt-Embedded-5.7.0/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -48,21 +48,27 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = src/main.cpp \
-		src/iams.cpp \
-		src/tcpclientwindow.cpp \
-		src/tcpserverwindow.cpp qrc_pic.cpp \
+SOURCES       = src/sources/main.cpp \
+		src/sources/mainWindows/iams.cpp \
+		src/sources/mainWindows/tcpClient.cpp \
+		src/sources/mainWindows/tcpServer.cpp \
+		src/sources/mainWindows/udpMW.cpp \
+		src/utils/getAvailableNetworkAddresses.cpp qrc_pic.cpp \
 		moc_iams.cpp \
-		moc_tcpclientwindow.cpp \
-		moc_tcpserverwindow.cpp
+		moc_tcpClient.cpp \
+		moc_tcpServer.cpp \
+		moc_udpMW.cpp
 OBJECTS       = main.o \
 		iams.o \
-		tcpclientwindow.o \
-		tcpserverwindow.o \
+		tcpClient.o \
+		tcpServer.o \
+		udpMW.o \
+		getAvailableNetworkAddresses.o \
 		qrc_pic.o \
 		moc_iams.o \
-		moc_tcpclientwindow.o \
-		moc_tcpserverwindow.o
+		moc_tcpClient.o \
+		moc_tcpServer.o \
+		moc_udpMW.o
 DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/common/unix.conf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/common/linux.conf \
@@ -178,12 +184,15 @@ DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/exceptions.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/yacc.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/lex.prf \
-		iams.pro src/iams.h \
-		src/tcpclientwindow.h \
-		src/tcpserverwindow.h src/main.cpp \
-		src/iams.cpp \
-		src/tcpclientwindow.cpp \
-		src/tcpserverwindow.cpp
+		iams.pro src/headers/mainWindows/iams.h \
+		src/headers/mainWindows/tcpClient.h \
+		src/headers/mainWindows/tcpServer.h \
+		src/headers/mainWindows/udpMW.h src/sources/main.cpp \
+		src/sources/mainWindows/iams.cpp \
+		src/sources/mainWindows/tcpClient.cpp \
+		src/sources/mainWindows/tcpServer.cpp \
+		src/sources/mainWindows/udpMW.cpp \
+		src/utils/getAvailableNetworkAddresses.cpp
 QMAKE_TARGET  = iams
 DESTDIR       = 
 TARGET        = iams
@@ -192,7 +201,7 @@ TARGET        = iams
 first: all
 ####### Build rules
 
-$(TARGET): ui_iams.h ui_tcpclientwindow.h ui_tcpserverwindow.h $(OBJECTS)  
+$(TARGET): ui_iams.h ui_tcpClient.h ui_tcpServer.h ui_udpMW.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: iams.pro /usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++/qmake.conf /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
@@ -453,9 +462,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents pic.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents src/iams.h src/tcpclientwindow.h src/tcpserverwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/main.cpp src/iams.cpp src/tcpclientwindow.cpp src/tcpserverwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/iams.ui src/tcpclientwindow.ui src/tcpserverwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents src/headers/mainWindows/iams.h src/headers/mainWindows/tcpClient.h src/headers/mainWindows/tcpServer.h src/headers/mainWindows/udpMW.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/sources/main.cpp src/sources/mainWindows/iams.cpp src/sources/mainWindows/tcpClient.cpp src/sources/mainWindows/tcpServer.cpp src/sources/mainWindows/udpMW.cpp src/utils/getAvailableNetworkAddresses.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/forms/mainWindows/iams.ui src/forms/mainWindows/tcpClient.ui src/forms/mainWindows/tcpServer.ui src/forms/mainWindows/udpMW.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -488,11 +497,11 @@ qrc_pic.cpp: pic.qrc \
 		pic/lildog.gif
 	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name pic pic.qrc -o qrc_pic.cpp
 
-compiler_moc_header_make_all: moc_iams.cpp moc_tcpclientwindow.cpp moc_tcpserverwindow.cpp
+compiler_moc_header_make_all: moc_iams.cpp moc_tcpClient.cpp moc_tcpServer.cpp moc_udpMW.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_iams.cpp moc_tcpclientwindow.cpp moc_tcpserverwindow.cpp
+	-$(DEL_FILE) moc_iams.cpp moc_tcpClient.cpp moc_tcpServer.cpp moc_udpMW.cpp
 moc_iams.cpp: ui_iams.h \
-		src/tcpclientwindow.h \
+		src/headers/mainWindows/tcpClient.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
@@ -597,10 +606,16 @@ moc_iams.cpp: ui_iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
-		src/tcpserverwindow.h \
+		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		src/headers/mainWindows/udpMW.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
@@ -612,11 +627,11 @@ moc_iams.cpp: ui_iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonobject.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonvalue.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfactoryinterface.h \
-		src/iams.h \
+		src/headers/mainWindows/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
-	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/iams.h -o moc_iams.cpp
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/iams.h -o moc_iams.cpp
 
-moc_tcpclientwindow.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
+moc_tcpClient.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
@@ -720,11 +735,11 @@ moc_tcpclientwindow.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWin
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
-		src/tcpclientwindow.h \
+		src/headers/mainWindows/tcpClient.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
-	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/tcpclientwindow.h -o moc_tcpclientwindow.cpp
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/tcpClient.h -o moc_tcpClient.cpp
 
-moc_tcpserverwindow.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
+moc_tcpServer.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
@@ -831,26 +846,142 @@ moc_tcpserverwindow.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWin
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
-		src/tcpserverwindow.h \
+		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
-	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/tcpserverwindow.h -o moc_tcpserverwindow.cpp
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/tcpServer.h -o moc_tcpServer.cpp
+
+moc_udpMW.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		src/headers/mainWindows/udpMW.h \
+		/usr/local/Qt-Embedded-5.7.0/bin/moc
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/udpMW.h -o moc_udpMW.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_iams.h ui_tcpclientwindow.h ui_tcpserverwindow.h
+compiler_uic_make_all: ui_iams.h ui_tcpClient.h ui_tcpServer.h ui_udpMW.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_iams.h ui_tcpclientwindow.h ui_tcpserverwindow.h
-ui_iams.h: src/iams.ui \
+	-$(DEL_FILE) ui_iams.h ui_tcpClient.h ui_tcpServer.h ui_udpMW.h
+ui_iams.h: src/forms/mainWindows/iams.ui \
 		/usr/local/Qt-Embedded-5.7.0/bin/uic
-	/usr/local/Qt-Embedded-5.7.0/bin/uic src/iams.ui -o ui_iams.h
+	/usr/local/Qt-Embedded-5.7.0/bin/uic src/forms/mainWindows/iams.ui -o ui_iams.h
 
-ui_tcpclientwindow.h: src/tcpclientwindow.ui \
+ui_tcpClient.h: src/forms/mainWindows/tcpClient.ui \
 		/usr/local/Qt-Embedded-5.7.0/bin/uic
-	/usr/local/Qt-Embedded-5.7.0/bin/uic src/tcpclientwindow.ui -o ui_tcpclientwindow.h
+	/usr/local/Qt-Embedded-5.7.0/bin/uic src/forms/mainWindows/tcpClient.ui -o ui_tcpClient.h
 
-ui_tcpserverwindow.h: src/tcpserverwindow.ui \
+ui_tcpServer.h: src/forms/mainWindows/tcpServer.ui \
 		/usr/local/Qt-Embedded-5.7.0/bin/uic
-	/usr/local/Qt-Embedded-5.7.0/bin/uic src/tcpserverwindow.ui -o ui_tcpserverwindow.h
+	/usr/local/Qt-Embedded-5.7.0/bin/uic src/forms/mainWindows/tcpServer.ui -o ui_tcpServer.h
+
+ui_udpMW.h: src/forms/mainWindows/udpMW.ui \
+		/usr/local/Qt-Embedded-5.7.0/bin/uic
+	/usr/local/Qt-Embedded-5.7.0/bin/uic src/forms/mainWindows/udpMW.ui -o ui_udpMW.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -862,9 +993,9 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-main.o: src/main.cpp src/iams.h \
+main.o: src/sources/main.cpp src/headers/mainWindows/iams.h \
 		ui_iams.h \
-		src/tcpclientwindow.h \
+		src/headers/mainWindows/tcpClient.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
@@ -969,10 +1100,16 @@ main.o: src/main.cpp src/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
-		src/tcpserverwindow.h \
+		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		src/headers/mainWindows/udpMW.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
@@ -989,11 +1126,11 @@ main.o: src/main.cpp src/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/sources/main.cpp
 
-iams.o: src/iams.cpp src/iams.h \
+iams.o: src/sources/mainWindows/iams.cpp src/headers/mainWindows/iams.h \
 		ui_iams.h \
-		src/tcpclientwindow.h \
+		src/headers/mainWindows/tcpClient.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
@@ -1098,10 +1235,16 @@ iams.o: src/iams.cpp src/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
-		src/tcpserverwindow.h \
+		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		src/headers/mainWindows/udpMW.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
@@ -1113,9 +1256,9 @@ iams.o: src/iams.cpp src/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonobject.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qjsonvalue.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfactoryinterface.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o iams.o src/iams.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o iams.o src/sources/mainWindows/iams.cpp
 
-tcpclientwindow.o: src/tcpclientwindow.cpp src/tcpclientwindow.h \
+tcpClient.o: src/sources/mainWindows/tcpClient.cpp src/headers/mainWindows/tcpClient.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
@@ -1220,10 +1363,10 @@ tcpclientwindow.o: src/tcpclientwindow.cpp src/tcpclientwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
-		ui_tcpclientwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpclientwindow.o src/tcpclientwindow.cpp
+		ui_tcpClient.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpClient.o src/sources/mainWindows/tcpClient.cpp
 
-tcpserverwindow.o: src/tcpserverwindow.cpp src/tcpserverwindow.h \
+tcpServer.o: src/sources/mainWindows/tcpServer.cpp src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
@@ -1331,8 +1474,188 @@ tcpserverwindow.o: src/tcpserverwindow.cpp src/tcpserverwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
-		ui_tcpserverwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpserverwindow.o src/tcpserverwindow.cpp
+		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		ui_tcpServer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpServer.o src/sources/mainWindows/tcpServer.cpp
+
+udpMW.o: src/sources/mainWindows/udpMW.cpp src/headers/mainWindows/udpMW.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmainwindow.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		ui_udpMW.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o udpMW.o src/sources/mainWindows/udpMW.cpp
+
+getAvailableNetworkAddresses.o: src/utils/getAvailableNetworkAddresses.cpp /usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o getAvailableNetworkAddresses.o src/utils/getAvailableNetworkAddresses.cpp
 
 qrc_pic.o: qrc_pic.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_pic.o qrc_pic.cpp
@@ -1340,11 +1663,14 @@ qrc_pic.o: qrc_pic.cpp
 moc_iams.o: moc_iams.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_iams.o moc_iams.cpp
 
-moc_tcpclientwindow.o: moc_tcpclientwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tcpclientwindow.o moc_tcpclientwindow.cpp
+moc_tcpClient.o: moc_tcpClient.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tcpClient.o moc_tcpClient.cpp
 
-moc_tcpserverwindow.o: moc_tcpserverwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tcpserverwindow.o moc_tcpserverwindow.cpp
+moc_tcpServer.o: moc_tcpServer.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tcpServer.o moc_tcpServer.cpp
+
+moc_udpMW.o: moc_udpMW.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_udpMW.o moc_udpMW.cpp
 
 ####### Install
 
