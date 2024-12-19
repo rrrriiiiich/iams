@@ -33,7 +33,6 @@ private:
     QUrl url;
 
 private slots:
-    void on_getRequestFinished();
     void on_requestButton_clicked();
     void on_showButton_clicked();
 };

@@ -54,24 +54,6 @@ void httpTest::getRequest(QUrl url)
     }
 
     reply->deleteLater();
-
-    // 避免重复连接
-    disconnect(reply, &QNetworkReply::finished, this, &httpTest::on_getRequestFinished);
-    connect(reply, &QNetworkReply::finished, this, &httpTest::on_getRequestFinished);
-}
-
-// http get 请求完成后的响应
-void httpTest::on_getRequestFinished()
-{
-    // 获取响应的数据
-    QByteArray data = qobject_cast<QNetworkReply *>(sender())->readAll();
-
-    // 获取响应的状态码
-    int statusCode = qobject_cast<QNetworkReply *>(sender())->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-
-    // 打印响应的数据和状态码
-    qDebug() << "httpTest: status code: " << statusCode;
-    qDebug() << "httpTest: data: " << data;
 }
 
 void httpTest::on_requestButton_clicked()
