@@ -26,6 +26,8 @@ private:
     QNetworkAccessManager *request;
     QUrl url;
 
+    NetworkManager *manager;
+
 private slots:
     void on_requestButton_clicked();
     void on_showButton_clicked();

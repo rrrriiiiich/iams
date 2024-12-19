@@ -45,3 +45,6 @@ RESOURCES += \
 
 # 添加网络模块
 QT += network
+
+# 指定静态库编译
+CONFIG += static

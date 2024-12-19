@@ -5,6 +5,8 @@ httpTest::httpTest(QWidget *parent) : QMainWindow(parent),
                                       ui(new Ui::httpTest)
 {
     ui->setupUi(this);
+
+    manager = new NetworkManager();
 }
 
 httpTest::~httpTest()
@@ -19,7 +21,19 @@ void httpTest::on_requestButton_clicked()
     QUrl url = ui->urlEdit->text();
     qDebug() << "httpTest: url: " << url;
     // 发送请求获取响应
-    sendRequest(url);
+    QNetworkReply *reply = manager->sendRequest(url, {HttpMethod::GET, HttpContentType::IMAGE});
+
+    if (reply->error() == QNetworkReply::NoError)
+    {
+        if (reply->header(QNetworkRequest::ContentTypeHeader).toString().contains("image"))
+        {
+            manager->saveImageToFile(reply, "test.png");
+        }
+    }
+    else
+    {
+        qDebug() << "sendRequest: Error:" << reply->errorString();
+    }
 }
 
 void httpTest::on_showButton_clicked()

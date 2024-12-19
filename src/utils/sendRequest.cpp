@@ -1,67 +1,24 @@
 #include "sendRequest.h"
 
-void saveImageToFile(QNetworkReply *reply, const QString &filename)
+NetworkManager::NetworkManager()
 {
-  QFile file(filename);
-  if (file.open(QIODevice::WriteOnly))
-  {
-    file.write(reply->readAll());
-    file.close();
-    qDebug() << "sendRequest: Image saved to:" << filename;
-  }
-  else
-  {
-    qDebug() << "sendRequest: Failed to save image!";
-  }
+  manager = new QNetworkAccessManager();
 }
 
-void setContentTypeHeader(QNetworkRequest &request, HttpContentType contentType)
+NetworkManager::~NetworkManager()
 {
-  switch (contentType)
-  {
-  case HttpContentType::JSON:
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    break;
-  case HttpContentType::IMAGE:
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "image/png");
-    break;
-  default:
-    break;
-  }
-}
-
-void waitForResponseWithCallback(QNetworkReply *reply, std::function<void(QNetworkReply *)> callback)
-{
+  // 确保所有正在进行的请求都完成了
   QEventLoop loop;
-  QObject::connect(reply, &QNetworkReply::finished, [&]()
-                   {
-    callback(reply);
-    loop.quit(); });
+  QObject::connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
   loop.exec();
+  manager->deleteLater();
 }
 
-void handleNetworkResponse(QNetworkReply *reply)
-{
-  if (reply->error() == QNetworkReply::NoError)
-  {
-    if (reply->header(QNetworkRequest::ContentTypeHeader).toString().contains("image"))
-    {
-      saveImageToFile(reply, "test.png");
-    }
-  }
-  else
-  {
-    qDebug() << "sendRequest: Error:" << reply->errorString();
-  }
-}
-
-void sendRequest(QUrl url, const requestOptions &options)
+QNetworkReply *NetworkManager::sendRequest(QUrl url, const requestOptions &options)
 {
   SYSTEMLog() << "Sending request to:" << url.toString();
   QNetworkRequest request;
   request.setUrl(url);
-
-  QNetworkAccessManager *manager = new QNetworkAccessManager();
 
   setContentTypeHeader(request, options.contentType);
 
@@ -80,7 +37,40 @@ void sendRequest(QUrl url, const requestOptions &options)
     break;
   }
 
-  waitForResponseWithCallback(reply, handleNetworkResponse);
+  this->waitForResponse(reply);
 
-  reply->deleteLater();
+  return reply;
+}
+
+void NetworkManager::setContentTypeHeader(QNetworkRequest &request, HttpContentType contentType)
+{
+  switch (contentType)
+  {
+  case HttpContentType::JSON:
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    break;
+  case HttpContentType::IMAGE:
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "image/png");
+    break;
+  default:
+    break;
+  }
+}
+
+void NetworkManager::waitForResponse(QNetworkReply *reply)
+{
+  QEventLoop loop;
+  QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+  loop.exec();
+}
+
+void NetworkManager::saveImageToFile(QNetworkReply *reply, const QString &filename)
+{
+  QFile file(filename);
+  if (file.open(QIODevice::WriteOnly))
+  {
+    file.write(reply->readAll());
+    file.close();
+    SYSTEMLog() << "Image saved to:" << filename;
+  }
 }
