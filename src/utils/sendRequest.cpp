@@ -1,49 +1,86 @@
 #include "sendRequest.h"
 
-void sendRequest(QUrl url)
+void saveImageToFile(QNetworkReply *reply, const QString &filename)
 {
-  qDebug() << "get request";
-  // 创建一个 QNetworkRequest 对象，用于发送 HTTP 请求
-  QNetworkRequest request;
+  QFile file(filename);
+  if (file.open(QIODevice::WriteOnly))
+  {
+    file.write(reply->readAll());
+    file.close();
+    qDebug() << "sendRequest: Image saved to:" << filename;
+  }
+  else
+  {
+    qDebug() << "sendRequest: Failed to save image!";
+  }
+}
 
-  // 设置请求的 URL 和请求方法
-  request.setUrl(url);
-  // request.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36");
-  // request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+void setContentTypeHeader(QNetworkRequest &request, HttpContentType contentType)
+{
+  switch (contentType)
+  {
+  case HttpContentType::JSON:
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    break;
+  case HttpContentType::IMAGE:
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "image/png");
+    break;
+  default:
+    break;
+  }
+}
 
-  // 创建一个 QNetworkAccessManager 对象，用于管理网络请求
-  QNetworkAccessManager *manager = new QNetworkAccessManager();
-
-  // 创建一个 QNetworkReply 对象，用于接收响应
-  QNetworkReply *reply = manager->get(request);
-
+void waitForResponseWithCallback(QNetworkReply *reply, std::function<void(QNetworkReply *)> callback)
+{
   QEventLoop loop;
-  QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+  QObject::connect(reply, &QNetworkReply::finished, [&]()
+                   {
+    callback(reply);
+    loop.quit(); });
   loop.exec();
+}
 
+void handleNetworkResponse(QNetworkReply *reply)
+{
   if (reply->error() == QNetworkReply::NoError)
   {
-    // 如果是图片 则保存到本地
     if (reply->header(QNetworkRequest::ContentTypeHeader).toString().contains("image"))
     {
-      // 保存图片到本地文件
-      QFile file("test.png");
-      if (file.open(QIODevice::WriteOnly))
-      {
-        file.write(reply->readAll());
-        file.close();
-        qDebug() << "sendRequest: Image saved to:" << "test.png";
-      }
-      else
-      {
-        qDebug() << "sendRequest: Failed to save image!";
-      }
+      saveImageToFile(reply, "test.png");
     }
   }
   else
   {
     qDebug() << "sendRequest: Error:" << reply->errorString();
   }
+}
+
+void sendRequest(QUrl url, const requestOptions &options)
+{
+  qDebug() << "get request";
+  QNetworkRequest request;
+  request.setUrl(url);
+
+  QNetworkAccessManager *manager = new QNetworkAccessManager();
+
+  setContentTypeHeader(request, options.contentType);
+
+  QNetworkReply *reply = nullptr;
+
+  switch (options.method)
+  {
+  case HttpMethod::GET:
+    reply = manager->get(request);
+    break;
+  case HttpMethod::POST:
+    // reply = manager->post(request, options.body);
+    break;
+  default:
+    qDebug() << "sendRequest: Invalid method!";
+    break;
+  }
+
+  waitForResponseWithCallback(reply, handleNetworkResponse);
 
   reply->deleteLater();
 }
