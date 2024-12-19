@@ -120,6 +120,7 @@
     "thread": "cpp",
     "typeinfo": "cpp",
     "qnetworkrequest": "cpp",
-    "future": "cpp"
+    "future": "cpp",
+    "qstring": "cpp"
   }
 }

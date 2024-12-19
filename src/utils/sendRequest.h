@@ -73,6 +73,5 @@ void handleNetworkResponse(QNetworkReply *reply);
  * 发送网络请求
  * @param url 请求的URL地址
  * @param options 请求选项，包含请求方法和内容类型等配置
- * 根据options中的配置发送GET请求，并处理响应结果
  */
 void sendRequest(QUrl url, const requestOptions &options = {HttpMethod::GET, HttpContentType::IMAGE, "test.png"});

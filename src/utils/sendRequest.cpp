@@ -57,7 +57,7 @@ void handleNetworkResponse(QNetworkReply *reply)
 
 void sendRequest(QUrl url, const requestOptions &options)
 {
-  SYSTEMLog("sendRequest");
+  SYSTEMLog() << "Sending request to:" << url.toString();
   QNetworkRequest request;
   request.setUrl(url);
 
