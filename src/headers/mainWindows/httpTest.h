@@ -9,6 +9,7 @@
 #include <QNetworkReply>
 // 包含客户端网络请求管理器类
 #include <QNetworkAccessManager>
+#include <QFile>
 
 namespace Ui
 {
@@ -23,10 +24,13 @@ public:
     explicit httpTest(QWidget *parent = nullptr);
     ~httpTest();
 
+    void getRequest(QUrl url);
+
 private:
     Ui::httpTest *ui;
 
-    void getRequest();
+    QNetworkAccessManager *request;
+    QUrl url;
 
 private slots:
     void on_getRequestFinished();

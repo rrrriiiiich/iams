@@ -18,7 +18,11 @@
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLineEdit" name="urlEdit"/>
+       <widget class="QLineEdit" name="urlEdit">
+        <property name="text">
+         <string>http://www.wxappclub.com/upload/column/c413eaf4-bfad-43bd-820b-538d5c7dcfd0.png</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="requestButton">
@@ -46,7 +50,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="showAreaLabel">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
