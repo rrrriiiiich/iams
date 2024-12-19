@@ -7,4 +7,6 @@ struct tcpServerAddress
   QHostAddress address;
 };
 
+Q_DECLARE_METATYPE(tcpServerAddress)
+
 QList<tcpServerAddress> getAvailableNetworkAddresses();

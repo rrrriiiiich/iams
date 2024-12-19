@@ -40,8 +40,6 @@ tcpClient::~tcpClient()
  */
 void tcpClient::on_backButton_clicked()
 {
-    qDebug() << "on_backButton_clicked";
-
     // 显示第一个窗口
     this->parentWidget()->show();
 
@@ -55,19 +53,29 @@ void tcpClient::on_connectButton_clicked()
     int port = ui->portEdit->text().trimmed().toInt();
     // 创建 TCP 连接
     qtcpSocket->connectToHost(address, port);
-    qDebug() << "connect to host";
+    // 如果连接成功 打印连接成功信息
+    if (qtcpSocket->waitForConnected(1000))
+    {
+        qDebug() << "tpc client: connect to host: " << address << ":" << port;
+    }
+    else
+    {
+        qDebug() << "tpc client: connect to host fail";
+    }
 }
 
 void tcpClient::on_sendButton_clicked()
 {
     // 发送数据
-    qtcpSocket->write(ui->sendEdit->text().trimmed().toUtf8());
-    qDebug() << "send data";
+    QString data = ui->sendEdit->text().trimmed();
+    qtcpSocket->write(data.toUtf8());
+    qDebug() << "tpc client: send: " << data;
 }
 
 void tcpClient::readData()
 {
     // ui->recvLabel->setText(tcpSocket->readAll());
-    ui->recvPlainTextEdit->appendPlainText(qtcpSocket->readAll());
-    qDebug() << "read data";
+    QString data = QString::fromUtf8(qtcpSocket->readAll());
+    ui->recvPlainTextEdit->appendPlainText(data);
+    qDebug() << "tpc client: read: " << data;
 }

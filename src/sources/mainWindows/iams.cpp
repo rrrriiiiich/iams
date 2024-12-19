@@ -38,13 +38,11 @@ iams::~iams()
  */
 void iams::on_cancel_clicked()
 {
-    qDebug() << "取消按钮槽函数";
     this->hide();
 }
 
 void iams::on_login_clicked()
 {
-    qDebug() << "登录按钮槽函数";
     // 获取并去除首尾空格，防止用户误输入空格导致登录失败
     QString username = ui->usernameLineEdit->text().trimmed();
     QString password = ui->passwordLineEdit->text().trimmed();
@@ -52,7 +50,7 @@ void iams::on_login_clicked()
     // 添加输入验证，避免空用户名或密码
     if (username.isEmpty() || password.isEmpty())
     {
-        qDebug() << "login failed: username or password is empty";
+        qDebug() << "iams: login failed: username or password is empty";
         return;
     }
 
@@ -62,7 +60,7 @@ void iams::on_login_clicked()
 
     if (username == VALID_USERNAME && password == VALID_PASSWORD)
     {
-        qDebug() << "login success";
+        qDebug() << "iams: login success";
 
         // 先显示新窗口再隐藏当前窗口，避免界面闪烁
         // S1->show();
@@ -70,7 +68,7 @@ void iams::on_login_clicked()
     }
     else
     {
-        qDebug() << "login failed: username or password is wrong";
+        qDebug() << "iams: login failed: username or password is wrong";
     }
 }
 
