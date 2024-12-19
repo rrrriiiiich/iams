@@ -10,6 +10,7 @@
 // 包含客户端网络请求管理器类
 #include <QNetworkAccessManager>
 #include <QFile>
+#include "sendRequest.h"
 
 namespace Ui
 {

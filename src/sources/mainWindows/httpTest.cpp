@@ -35,17 +35,21 @@ void httpTest::getRequest(QUrl url)
 
     if (reply->error() == QNetworkReply::NoError)
     {
-        // 保存图片到本地文件
-        QFile file("c413eaf4-bfad-43bd-820b-538d5c7dcfd0.png");
-        if (file.open(QIODevice::WriteOnly))
+        // 如果是图片 则保存到本地
+        if (reply->header(QNetworkRequest::ContentTypeHeader).toString().contains("image"))
         {
-            file.write(reply->readAll());
-            file.close();
-            qDebug() << "httpTest: Image saved to:" << "c413eaf4-bfad-43bd-820b-538d5c7dcfd0.png";
-        }
-        else
-        {
-            qDebug() << "httpTest: Failed to save image!";
+            // 保存图片到本地文件
+            QFile file("test.png");
+            if (file.open(QIODevice::WriteOnly))
+            {
+                file.write(reply->readAll());
+                file.close();
+                qDebug() << "httpTest: Image saved to:" << "test.png";
+            }
+            else
+            {
+                qDebug() << "httpTest: Failed to save image!";
+            }
         }
     }
     else
@@ -63,13 +67,12 @@ void httpTest::on_requestButton_clicked()
     QUrl url = ui->urlEdit->text();
     qDebug() << "httpTest: url: " << url;
     // 发送请求获取响应
-    getRequest(url);
+    sendRequest(url);
 }
 
 void httpTest::on_showButton_clicked()
 {
     qDebug() << "httpTest: on_showButton_clicked";
-    // 从"c413eaf4-bfad-43bd-820b-538d5c7dcfd0.png"读取图片
-    QImage image("c413eaf4-bfad-43bd-820b-538d5c7dcfd0.png");
+    QImage image("test.png");
     ui->showAreaLabel->setPixmap(QPixmap::fromImage(image));
 }
