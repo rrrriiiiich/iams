@@ -119,6 +119,7 @@
     "streambuf": "cpp",
     "thread": "cpp",
     "typeinfo": "cpp",
-    "qnetworkrequest": "cpp"
+    "qnetworkrequest": "cpp",
+    "future": "cpp"
   }
 }

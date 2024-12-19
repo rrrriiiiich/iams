@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QEventLoop>
 #include <functional>
+#include "systemLog.h"
 
 enum class HttpMethod
 {

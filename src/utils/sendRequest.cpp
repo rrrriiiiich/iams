@@ -57,7 +57,7 @@ void handleNetworkResponse(QNetworkReply *reply)
 
 void sendRequest(QUrl url, const requestOptions &options)
 {
-  qDebug() << "get request";
+  SYSTEMLog("sendRequest");
   QNetworkRequest request;
   request.setUrl(url);
 
