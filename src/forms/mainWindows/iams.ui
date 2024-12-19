@@ -89,7 +89,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../pic.qrc">:/pic/PepiconsPrintCellphoneEye.png</pixmap>
+         <pixmap resource="../../../pic.qrc">:/pic/PepiconsPrintCellphoneEye.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -379,6 +379,13 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="udpTestBt">
+        <property name="text">
+         <string>udpTest</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="tcpcServerBt">
         <property name="text">
          <string>tcp服务端</string>
@@ -418,7 +425,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../pic.qrc"/>
+  <include location="../../../pic.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -68,6 +68,7 @@
     "fstream": "cpp",
     "qdebug": "cpp",
     "qtcpsocket": "cpp",
-    "qnetworkinterface": "cpp"
+    "qnetworkinterface": "cpp",
+    "qmovie": "cpp"
   }
 }

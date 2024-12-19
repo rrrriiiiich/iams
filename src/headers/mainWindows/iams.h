@@ -2,6 +2,8 @@
 #include "ui_iams.h"
 #include "tcpClient.h"
 #include "tcpServer.h"
+#include "udpMW.h"
+
 #include <QMainWindow>
 #include <QMovie>
 
@@ -43,6 +45,8 @@ private slots:
 
     void on_tcpClientBt_clicked();
 
+    void on_udpTestBt_clicked();
+
 private:
     /**
      * @brief 指向 Ui_iams 类的指针，用于访问和操作界面元素
@@ -58,4 +62,9 @@ private:
      * @brief 指向 tcpServer 类的指针，用于管理和操作 tcpServer 窗口
      */
     tcpServer *TcpServer;
+
+    /**
+     * @brief 指向 udpMW 类的指针，用于管理和操作 udpMW 窗口
+     */
+    udpMW *UdpMW;
 };
