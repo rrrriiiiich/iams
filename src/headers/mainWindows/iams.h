@@ -3,6 +3,7 @@
 #include "tcpClient.h"
 #include "tcpServer.h"
 #include "udpMW.h"
+#include "dashboard.h"
 
 #include <QMainWindow>
 #include <QMovie>
@@ -67,4 +68,9 @@ private:
      * @brief 指向 udpMW 类的指针，用于管理和操作 udpMW 窗口
      */
     udpMW *UdpMW;
+
+    /**
+     * @brief   指向 dashboard 类的指针，用于管理和操作 dashboard 窗口
+     */
+    dashboard *Dashboard;
 };

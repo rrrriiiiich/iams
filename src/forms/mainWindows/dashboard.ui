@@ -1,0 +1,24 @@
+<ui version="4.0">
+ <author/>
+ <comment/>
+ <exportmacro/>
+ <class>dashboard</class>
+ <widget name="dashboard" class="QMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>智慧农业监控系统-仪表盘</string>
+  </property>
+  <widget name="menubar" class="QMenuBar"/>
+  <widget name="centralwidget" class="QWidget"/>
+  <widget name="statusbar" class="QStatusBar"/>
+ </widget>
+ <pixmapfunction/>
+ <connections/>
+</ui>

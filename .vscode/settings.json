@@ -69,6 +69,7 @@
     "qdebug": "cpp",
     "qtcpsocket": "cpp",
     "qnetworkinterface": "cpp",
-    "qmovie": "cpp"
+    "qmovie": "cpp",
+    "qnetworkreply": "cpp"
   }
 }

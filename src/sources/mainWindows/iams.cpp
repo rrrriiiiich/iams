@@ -20,6 +20,7 @@ iams::iams(QWidget *parent)
     TcpClient = new tcpClient(this);
     TcpServer = new tcpServer(this);
     UdpMW = new udpMW(this);
+    Dashboard = new dashboard(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
@@ -64,8 +65,8 @@ void iams::on_login_clicked()
         qDebug() << "iams: login success";
 
         // 先显示新窗口再隐藏当前窗口，避免界面闪烁
-        // S1->show();
-        // this->hide();
+        Dashboard->show();
+        this->hide();
     }
     else
     {
