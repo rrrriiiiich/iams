@@ -21,25 +21,6 @@
         }
       ],
       "preLaunchTask": "make-debug"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "f:/Embedded/Transportlayertraining/QT/iams/src/sources",
-      "program": "f:/Embedded/Transportlayertraining/QT/iams/src/sources/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
     }
   ]
 }
