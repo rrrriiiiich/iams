@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QUdpSocket>
 
 namespace Ui
 {
@@ -24,8 +25,12 @@ private slots:
 
     void on_sendButton_clicked();
 
+    void on_readData();
+
 private:
     Ui::udpMW *ui;
+
+    QUdpSocket *udpsocket;
 };
 
 #endif // UDPMW_H

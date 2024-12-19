@@ -55,6 +55,9 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="text">
+         <string>127.0.0.1</string>
+        </property>
         <property name="placeholderText">
          <string>请输入正确ip地址</string>
         </property>
@@ -67,6 +70,9 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="text">
+         <string>56865</string>
         </property>
         <property name="placeholderText">
          <string>请输入正确端口地址</string>
@@ -88,10 +94,13 @@
       </item>
      </layout>
     </item>
-    <item row="3" column="0">
+    <item row="4" column="0">
      <layout class="QHBoxLayout" name="sendConfig">
       <item>
        <widget class="QLineEdit" name="sendAdderssEdit">
+        <property name="text">
+         <string>127.0.0.1</string>
+        </property>
         <property name="placeholderText">
          <string>请输入要发送的地址</string>
         </property>
@@ -99,6 +108,9 @@
       </item>
       <item>
        <widget class="QLineEdit" name="sendPortEdit">
+        <property name="text">
+         <string>50000</string>
+        </property>
         <property name="placeholderText">
          <string>请输入要发送的端口</string>
         </property>
@@ -119,26 +131,29 @@
       </item>
      </layout>
     </item>
-    <item row="5" column="0">
+    <item row="2" column="0">
      <widget class="QPlainTextEdit" name="recvPlainTextEdit">
       <property name="readOnly">
        <bool>true</bool>
       </property>
       <property name="plainText">
-       <string/>
+       <string>显示服务端发送内容</string>
       </property>
       <property name="placeholderText">
        <string>显示服务端发送内容</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="5" column="0">
      <widget class="QLineEdit" name="sendEdit">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Hi JinJieBeWater</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
