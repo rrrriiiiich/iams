@@ -14,6 +14,9 @@ struct tcpServerAddress
   QHostAddress address; ///< IP地址
 };
 
+// 注册到 Qt 的元对象系统中
+Q_DECLARE_METATYPE(tcpServerAddress)
+
 /**
  * @brief 获取系统中所有可用的网络地址
  * @return 返回包含网络接口名称和地址信息的列表

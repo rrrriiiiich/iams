@@ -3,6 +3,9 @@
 NetworkManager::NetworkManager()
 {
   manager = new QNetworkAccessManager();
+
+  // 打印支持的网络请求
+  // SYSTEMLog() << "Supported request methods:" << manager->supportedSchemes().join(", ");
 }
 
 NetworkManager::~NetworkManager()
