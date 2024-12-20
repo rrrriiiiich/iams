@@ -29,6 +29,7 @@ private:
 private slots:
     void on_requestButton_clicked();
     void on_showButton_clicked();
+    void on_backButton_clicked();
 };
 
 #endif // HTTPTEST_H

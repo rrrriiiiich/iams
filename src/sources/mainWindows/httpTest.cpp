@@ -42,3 +42,12 @@ void httpTest::on_showButton_clicked()
     QImage image("test.png");
     ui->showAreaLabel->setPixmap(QPixmap::fromImage(image));
 }
+
+void httpTest::on_backButton_clicked()
+{
+    // 显示第一个窗口
+    this->parentWidget()->show();
+
+    // 隐藏当前窗口
+    this->close();
+}
