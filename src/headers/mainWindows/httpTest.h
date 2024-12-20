@@ -2,6 +2,9 @@
 #define HTTPTEST_H
 
 #include <QMainWindow>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
 #include "sendRequest.h"
 #include "systemLog.h"

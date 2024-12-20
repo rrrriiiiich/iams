@@ -76,7 +76,7 @@ public:
     else
     {
       // 对于无法直接转换为QString的类型，使用qDebug()输出并转换为QString
-      qDebug() << "不支持的类型：" << var.typeName();
+      qDebug() << "[SystemLog] ：" << value;
     }
 
     m_message = m_message.isEmpty() ? strValue : m_message + " " + strValue;

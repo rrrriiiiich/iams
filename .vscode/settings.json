@@ -3,6 +3,7 @@
     "manifest.json": "jsonc",
     "pages.json": "jsonc",
     "*.md": "markdown",
-    "qnetworkinterface": "cpp"
+    "qnetworkinterface": "cpp",
+    "qjsondocument": "cpp"
   }
 }
