@@ -41,24 +41,13 @@ void httpTest::on_requestButton_clicked()
 
     if (reply2->error() == QNetworkReply::NoError)
     {
-        QByteArray responseData = reply2->readAll();
-        QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
-        if (!jsonDoc.isNull() && jsonDoc.isObject())
-        {
-            QJsonObject jsonObj = jsonDoc.object();
-            ui->showAreaLabel->setText(QString(jsonObj.value("results").toString()));
-
-            SYSTEMLog() << "JSON Object:" << QString::fromUtf8(jsonDoc.toJson());
-            ui->showAreaLabel->setText(QString::fromUtf8(jsonDoc.toJson()));
-        }
-        else
-        {
-            SYSTEMLog() << "Failed to parse JSON!";
-        }
+        QString data = QByteArrayToQString(reply2->readAll());
+        SYSTEMLog() << "data:" << data;
+        ui->showAreaLabel->setText(data);
     }
     else
     {
-        SYSTEMLog() << "Error:" << reply2->errorString();
+        qDebug() << "Error:" << reply2->errorString();
     }
 
     reply2->deleteLater();
