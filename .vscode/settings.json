@@ -4,6 +4,8 @@
     "pages.json": "jsonc",
     "*.md": "markdown",
     "qnetworkinterface": "cpp",
-    "qjsondocument": "cpp"
+    "qjsondocument": "cpp",
+    "cmath": "cpp",
+    "qmainwindow": "cpp"
   }
 }

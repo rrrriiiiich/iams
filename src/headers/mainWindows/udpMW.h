@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QUdpSocket>
 
-#include "systemLog.h"
+#include "SystemLogger.h"
 
 namespace Ui
 {

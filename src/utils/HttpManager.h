@@ -11,7 +11,7 @@
 #include <QDebug>
 #include <QUrl>
 
-#include "systemLog.h"
+#include "SystemLogger.h"
 
 /**
  * @brief HTTP请求方法枚举

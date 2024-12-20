@@ -6,7 +6,7 @@
 #include <QTcpSocket>
 // #include <QVariant>
 #include "getAvailableNetworkAddresses.h"
-#include "systemLog.h"
+#include "SystemLogger.h"
 
 namespace Ui
 {
