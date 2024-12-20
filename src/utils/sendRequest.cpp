@@ -33,7 +33,7 @@ QNetworkReply *NetworkManager::sendRequest(QUrl url, const requestOptions &optio
     // reply = manager->post(request, options.body);
     break;
   default:
-    qDebug() << "sendRequest: Invalid method!";
+    SYSTEMLog() << "method: Invalid method!";
     break;
   }
 
@@ -53,6 +53,7 @@ void NetworkManager::setContentTypeHeader(QNetworkRequest &request, HttpContentT
     request.setHeader(QNetworkRequest::ContentTypeHeader, "image/png");
     break;
   default:
+    SYSTEMLog() << "setContentTypeHeader: Invalid content type!";
     break;
   }
 }
