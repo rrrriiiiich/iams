@@ -41,7 +41,7 @@ void httpTest::on_requestButton_clicked()
 
     if (reply2->error() == QNetworkReply::NoError)
     {
-        QString data = QByteArrayToQString(reply2->readAll());
+        QString data = byteToJsonString(reply2->readAll());
         SYSTEMLog() << "data:" << data;
         ui->showAreaLabel->setText(data);
     }

@@ -8,7 +8,7 @@
 
 #include "sendRequest.h"
 #include "systemLog.h"
-#include "QByteArrayToQString.h"
+#include "byteToJsonString.h"
 
 namespace Ui
 {

@@ -2,4 +2,4 @@
 #include <QJsonObject>
 #include "systemLog.h"
 
-QString QByteArrayToQString(QByteArray data);
+QString byteToJsonString(QByteArray data);

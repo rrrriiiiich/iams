@@ -1,6 +1,6 @@
-#include "QByteArrayToQString.h"
+#include "byteToJsonString.h"
 
-QString QByteArrayToQString(QByteArray data)
+QString byteToJsonString(QByteArray data)
 {
   QString result;
   QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
