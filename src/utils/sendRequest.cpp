@@ -23,6 +23,12 @@ QNetworkReply *NetworkManager::sendRequest(QUrl url, const requestOptions &optio
   QNetworkRequest request;
   request.setUrl(url);
 
+  // 解析 https 链接
+  QSslConfiguration cfg = request.sslConfiguration();
+  cfg.setPeerVerifyMode(QSslSocket::VerifyNone);
+  cfg.setProtocol(QSsl::AnyProtocol);
+  request.setSslConfiguration(cfg);
+
   setContentTypeHeader(request, options.contentType);
 
   QNetworkReply *reply = nullptr;

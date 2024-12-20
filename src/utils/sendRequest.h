@@ -38,7 +38,8 @@ struct requestOptions
 {
   HttpMethod method;
   HttpContentType contentType;
-  // QByteArray body;
+
+  requestOptions(HttpMethod method, HttpContentType contentType) : method(method), contentType(contentType) {}
 };
 
 /**
@@ -65,7 +66,7 @@ public:
    * @param options 请求选项
    * @return QNetworkReply* 网络响应对象
    */
-  QNetworkReply *sendRequest(QUrl url, const requestOptions &options);
+  QNetworkReply *sendRequest(QUrl url, const requestOptions &options = requestOptions(HttpMethod::GET, HttpContentType::JSON));
 
   /**
    * @brief 将图片保存到文件
