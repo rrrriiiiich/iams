@@ -5,7 +5,7 @@ NetworkManager::NetworkManager()
   manager = new QNetworkAccessManager();
 
   // 打印支持的网络请求
-  // SYSTEMLog() << "Supported request methods:" << manager->supportedSchemes().join(", ");
+  SYSTEMLog() << "Supported request methods:" << manager->supportedSchemes().join(", ");
 }
 
 NetworkManager::~NetworkManager()
@@ -73,8 +73,10 @@ void NetworkManager::saveImageToFile(QNetworkReply *reply, const QString &filena
   QFile file(filename);
   if (file.open(QIODevice::WriteOnly))
   {
+    // 打印图片的fileName
+    SYSTEMLog() << "fileName: " << reply->request().url().fileName();
     file.write(reply->readAll());
     file.close();
-    SYSTEMLog() << "Image saved to:" << filename;
+    SYSTEMLog() << "file saved to:" << filename;
   }
 }

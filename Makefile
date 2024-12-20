@@ -618,6 +618,10 @@ moc_dashboard.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/dashboard.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/dashboard.h -o moc_dashboard.cpp
@@ -722,7 +726,6 @@ moc_httpTest.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		src/utils/sendRequest.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkAccessManager \
@@ -754,6 +757,7 @@ moc_httpTest.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QEventLoop \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		src/utils/systemLog.h \
 		src/headers/mainWindows/httpTest.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
@@ -861,10 +865,13 @@ moc_iams.cpp: ui_iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
@@ -893,20 +900,17 @@ moc_iams.cpp: ui_iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QtGlobal \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QSharedDataPointer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMetaType \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkRequest \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkrequest.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QUrl \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkReply \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkreply.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QIODevice \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QEventLoop \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
-		src/utils/systemLog.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
@@ -1021,10 +1025,13 @@ moc_tcpClient.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/tcpClient.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/tcpClient.h -o moc_tcpClient.cpp
@@ -1129,7 +1136,6 @@ moc_tcpServer.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
@@ -1137,8 +1143,12 @@ moc_tcpServer.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/tcpServer.h -o moc_tcpServer.cpp
@@ -1243,11 +1253,14 @@ moc_udpMW.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainWindow \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/udpMW.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/f/Embedded/Transportlayertraining/QT/iams -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/headers/mainWindows -I/mnt/f/Embedded/Transportlayertraining/QT/iams/src/utils -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/usr/local/cross/gec6818-5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/include -I/usr/local/cross/gec6818-5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include src/headers/mainWindows/udpMW.h -o moc_udpMW.cpp
@@ -1394,10 +1407,13 @@ main.o: src/sources/main.cpp src/headers/mainWindows/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
@@ -1426,20 +1442,17 @@ main.o: src/sources/main.cpp src/headers/mainWindows/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QtGlobal \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QSharedDataPointer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMetaType \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkRequest \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkrequest.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QUrl \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkReply \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkreply.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QIODevice \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QEventLoop \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
-		src/utils/systemLog.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
@@ -1558,6 +1571,10 @@ dashboard.o: src/sources/mainWindows/dashboard.cpp src/headers/mainWindows/dashb
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		ui_dashboard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dashboard.o src/sources/mainWindows/dashboard.cpp
 
@@ -1662,7 +1679,6 @@ httpTest.o: src/sources/mainWindows/httpTest.cpp src/headers/mainWindows/httpTes
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		src/utils/sendRequest.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkAccessManager \
@@ -1694,6 +1710,7 @@ httpTest.o: src/sources/mainWindows/httpTest.cpp src/headers/mainWindows/httpTes
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QEventLoop \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		src/utils/systemLog.h \
 		ui_httpTest.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o httpTest.o src/sources/mainWindows/httpTest.cpp
@@ -1801,10 +1818,13 @@ iams.o: src/sources/mainWindows/iams.cpp src/headers/mainWindows/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		src/headers/mainWindows/tcpServer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
@@ -1833,20 +1853,17 @@ iams.o: src/sources/mainWindows/iams.cpp src/headers/mainWindows/iams.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QtGlobal \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QSharedDataPointer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMetaType \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkRequest \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkrequest.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QUrl \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkReply \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkreply.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QIODevice \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QEventLoop \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
-		src/utils/systemLog.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QMovie \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmovie.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
@@ -1960,10 +1977,13 @@ tcpClient.o: src/sources/mainWindows/tcpClient.cpp src/headers/mainWindows/tcpCl
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		ui_tcpClient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpClient.o src/sources/mainWindows/tcpClient.cpp
 
@@ -2068,7 +2088,6 @@ tcpServer.o: src/sources/mainWindows/tcpServer.cpp src/headers/mainWindows/tcpSe
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpServer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpserver.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
@@ -2076,8 +2095,12 @@ tcpServer.o: src/sources/mainWindows/tcpServer.cpp src/headers/mainWindows/tcpSe
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QTcpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qtcpsocket.h \
 		src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QNetworkInterface \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qnetworkinterface.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		ui_tcpServer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpServer.o src/sources/mainWindows/tcpServer.cpp
 
@@ -2182,15 +2205,19 @@ udpMW.o: src/sources/mainWindows/udpMW.cpp src/headers/mainWindows/udpMW.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/QUdpSocket \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qudpsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qabstractsocket.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtNetwork/qhostaddress.h \
+		src/utils/systemLog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
 		ui_udpMW.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o udpMW.o src/sources/mainWindows/udpMW.cpp
 
-getAvailableNetworkAddresses.o: src/utils/getAvailableNetworkAddresses.cpp /usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+getAvailableNetworkAddresses.o: src/utils/getAvailableNetworkAddresses.cpp src/utils/getAvailableNetworkAddresses.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
@@ -2421,7 +2448,8 @@ systemLog.o: src/utils/systemLog.cpp src/utils/systemLog.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o systemLog.o src/utils/systemLog.cpp
 
 qrc_pic.o: qrc_pic.cpp 
