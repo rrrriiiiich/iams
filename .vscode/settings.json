@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "manifest.json": "jsonc",
+    "pages.json": "jsonc",
+    "*.md": "markdown",
+    "qnetworkinterface": "cpp"
+  }
+}

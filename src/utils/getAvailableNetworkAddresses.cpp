@@ -1,11 +1,4 @@
-#include <QDebug>
-#include <QNetworkInterface>
-
-struct tcpServerAddress
-{
-  QString name;
-  QHostAddress address;
-};
+#include "getAvailableNetworkAddresses.h"
 
 QList<tcpServerAddress> getAvailableNetworkAddresses()
 {
