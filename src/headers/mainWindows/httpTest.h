@@ -6,7 +6,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "sendRequest.h"
+#include "HttpManager.h"
 #include "systemLog.h"
 #include "byteToJsonString.h"
 
@@ -28,7 +28,7 @@ private:
 
     QUrl url;
 
-    NetworkManager *manager;
+    HttpManager *httpManager;
 
 private slots:
     void on_requestButton_clicked();

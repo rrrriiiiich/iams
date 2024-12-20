@@ -1,6 +1,6 @@
-#include "sendRequest.h"
+#include "HttpManager.h"
 
-NetworkManager::NetworkManager()
+HttpManager::HttpManager()
 {
   manager = new QNetworkAccessManager();
 
@@ -8,7 +8,7 @@ NetworkManager::NetworkManager()
   SYSTEMLog() << "Supported request methods:" << manager->supportedSchemes().join(", ");
 }
 
-NetworkManager::~NetworkManager()
+HttpManager::~HttpManager()
 {
   // 确保所有正在进行的请求都完成了
   QEventLoop loop;
@@ -17,7 +17,7 @@ NetworkManager::~NetworkManager()
   manager->deleteLater();
 }
 
-QNetworkReply *NetworkManager::sendRequest(QUrl url, const requestOptions &options)
+QNetworkReply *HttpManager::send(QUrl url, const requestOptions &options)
 {
   SYSTEMLog() << "Sending request to:" << url.toString();
   QNetworkRequest request;
@@ -51,7 +51,7 @@ QNetworkReply *NetworkManager::sendRequest(QUrl url, const requestOptions &optio
   return reply;
 }
 
-void NetworkManager::setContentTypeHeader(QNetworkRequest &request, HttpContentType contentType)
+void HttpManager::setContentTypeHeader(QNetworkRequest &request, HttpContentType contentType)
 {
   switch (contentType)
   {
@@ -67,14 +67,14 @@ void NetworkManager::setContentTypeHeader(QNetworkRequest &request, HttpContentT
   }
 }
 
-void NetworkManager::waitForResponse(QNetworkReply *reply)
+void HttpManager::waitForResponse(QNetworkReply *reply)
 {
   QEventLoop loop;
   QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
   loop.exec();
 }
 
-void NetworkManager::saveImageToFile(QNetworkReply *reply, const QString &filename)
+void HttpManager::saveImageToFile(QNetworkReply *reply, const QString &filename)
 {
   QFile file(filename);
   if (file.open(QIODevice::WriteOnly))

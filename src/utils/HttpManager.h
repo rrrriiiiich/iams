@@ -47,18 +47,18 @@ struct requestOptions
  *
  * 该类负责处理HTTP网络请求的发送和接收
  */
-class NetworkManager
+class HttpManager
 {
 public:
   /**
    * @brief 构造函数
    */
-  NetworkManager();
+  HttpManager();
 
   /**
    * @brief 析构函数
    */
-  ~NetworkManager();
+  ~HttpManager();
 
   /**
    * @brief 发送网络请求
@@ -66,7 +66,7 @@ public:
    * @param options 请求选项
    * @return QNetworkReply* 网络响应对象
    */
-  QNetworkReply *sendRequest(QUrl url, const requestOptions &options = requestOptions(HttpMethod::GET, HttpContentType::JSON));
+  QNetworkReply *send(QUrl url, const requestOptions &options = requestOptions(HttpMethod::GET, HttpContentType::JSON));
 
   /**
    * @brief 将图片保存到文件

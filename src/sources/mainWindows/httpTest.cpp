@@ -6,7 +6,7 @@ httpTest::httpTest(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
-    manager = new NetworkManager();
+    httpManager = new HttpManager();
 }
 
 httpTest::~httpTest()
@@ -21,13 +21,13 @@ void httpTest::on_requestButton_clicked()
     QUrl url = ui->urlEdit->text();
     SYSTEMLog() << "url: " << url;
     // 发送请求获取响应
-    QNetworkReply *reply = manager->sendRequest(url, {HttpMethod::GET, HttpContentType::IMAGE});
+    QNetworkReply *reply = httpManager->send(url, {HttpMethod::GET, HttpContentType::IMAGE});
 
     if (reply->error() == QNetworkReply::NoError)
     {
         if (reply->header(QNetworkRequest::ContentTypeHeader).toString().contains("image"))
         {
-            manager->saveImageToFile(reply, "test.png");
+            httpManager->saveImageToFile(reply, "test.png");
         }
     }
     else
@@ -37,7 +37,7 @@ void httpTest::on_requestButton_clicked()
 
     reply->deleteLater();
 
-    QNetworkReply *reply2 = manager->sendRequest(QUrl("https://api.seniverse.com/v3/weather/now.json?key=Sklo5n7_p1T6c_AcV&location=%E5%B9%BF%E5%B7%9E&language=zh-Hans&unit=c"));
+    QNetworkReply *reply2 = httpManager->send(QUrl("https://api.seniverse.com/v3/weather/now.json?key=Sklo5n7_p1T6c_AcV&location=%E5%B9%BF%E5%B7%9E&language=zh-Hans&unit=c"));
 
     if (reply2->error() == QNetworkReply::NoError)
     {
