@@ -16,7 +16,7 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
     ui->addressComboBox->addItem("所有地址: 0.0.0.0");
 
     // 将getAvailableNetworkAddresses返回的地址放到下拉框中
-    for (const tcpServerAddress &address : getAvailableNetworkAddresses())
+    for (const availableServerAddress &address : getAvailableNetworkAddresses())
     {
         // SYSTEMLog() << address.name << ":" << address.address.toString();
         ui->addressComboBox->addItem(address.name + ": " + address.address.toString(), QVariant::fromValue(address));
@@ -40,12 +40,12 @@ void tcpServer::on_listenButton_clicked()
     }
 
     // 获取下拉框中选中的地址
-    QHostAddress address = ui->addressComboBox->currentData().value<tcpServerAddress>().address;
+    QHostAddress address = ui->addressComboBox->currentData().value<availableServerAddress>().address;
 
     // 如果下拉框中没有选中地址 则使用第一个地址
     if (address.isNull())
     {
-        address = ui->addressComboBox->itemData(0).value<tcpServerAddress>().address;
+        address = ui->addressComboBox->itemData(0).value<availableServerAddress>().address;
     }
 
     SYSTEMLog() << "address:" << address.toString();
