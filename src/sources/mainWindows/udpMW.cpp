@@ -81,7 +81,6 @@ void udpMW::on_readData()
 
 #ifndef _WIN32
     // 调用 buzz 函数
-    Log() << "read buzz signal";
     if (QString(datagram) == "buzz on")
     {
         Log() << "buzz on";
