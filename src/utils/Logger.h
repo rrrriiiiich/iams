@@ -20,7 +20,7 @@ void log(const QString &message, const char *file, int line);
  *
  * 用于格式化输出系统日志,支持流式语法
  */
-class SystemLogger
+class Logger
 {
 public:
   /**
@@ -28,28 +28,28 @@ public:
    * @param file 源文件名
    * @param line 代码行号
    */
-  SystemLogger(const char *file, int line);
+  Logger(const char *file, int line);
 
   /**
    * @brief 析构函数,输出累积的日志信息
    */
-  ~SystemLogger();
+  ~Logger();
 
   /**
    * @brief 重载流式操作符
    * @param message 要追加的日志消息
-   * @return SystemLogger& 返回自身引用以支持链式调用
+   * @return Logger& 返回自身引用以支持链式调用
    */
-  SystemLogger &operator<<(const QString &message);
+  Logger &operator<<(const QString &message);
 
   /**
    * @brief 模板函数，用于处理任何可以转换为QString的类型
    * @tparam T 类型参数
    * @param value 要追加的值
-   * @return SystemLogger& 返回自身引用以支持链式调用
+   * @return Logger& 返回自身引用以支持链式调用
    */
   template <typename T>
-  SystemLogger &operator<<(const T &value)
+  Logger &operator<<(const T &value)
   {
     QVariant var(value);
     QString strValue;
@@ -78,7 +78,7 @@ public:
     else
     {
       // 对于无法直接转换为QString的类型，使用Log()输出并转换为QString
-      qDebug() << "[SystemLogger not support]：" << value;
+      qDebug() << "[Logger not support]：" << value;
     }
 
     m_message = m_message.isEmpty() ? strValue : m_message + " " + strValue;
@@ -103,6 +103,6 @@ private:
 
 #else
 
-#define Log(...) SystemLogger(__FILE__, __LINE__) << (QString(__VA_ARGS__).isEmpty() ? "" : QString(__VA_ARGS__))
+#define Log(...) Logger(__FILE__, __LINE__) << (QString(__VA_ARGS__).isEmpty() ? "" : QString(__VA_ARGS__))
 
 #endif

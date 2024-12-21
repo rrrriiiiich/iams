@@ -1,5 +1,5 @@
 #include "iams.h"
-#include "SystemLogger.h"
+#include "Logger.h"
 
 #include <QApplication>
 // #pragma comment(lib, "user32.lib")

@@ -1,6 +1,6 @@
 // !!! 废弃 原生qDebug已经实现了很多功能 仅用作学习
 
-#include "SystemLogger.h"
+#include "Logger.h"
 
 void log(const QString &message, const char *file, int line)
 {
@@ -9,16 +9,16 @@ void log(const QString &message, const char *file, int line)
     qDebug().noquote() << debugMessage;
 }
 
-SystemLogger::SystemLogger(const char *file, int line) : m_file(file), m_line(line), m_message("")
+Logger::Logger(const char *file, int line) : m_file(file), m_line(line), m_message("")
 {
 }
 
-SystemLogger::~SystemLogger()
+Logger::~Logger()
 {
     log(m_message, m_file, m_line);
 }
 
-SystemLogger &SystemLogger::operator<<(const QString &message)
+Logger &Logger::operator<<(const QString &message)
 {
     m_message = m_message.isEmpty() ? message : m_message + " " + message;
     return *this;

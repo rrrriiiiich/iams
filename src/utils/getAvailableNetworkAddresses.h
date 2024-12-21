@@ -1,7 +1,7 @@
 #ifndef GET_AVAILABLE_NETWORK_ADDRESSES_H
 #define GET_AVAILABLE_NETWORK_ADDRESSES_H
 
-#include "SystemLogger.h"
+#include "Logger.h"
 #include <QNetworkInterface>
 
 /**
