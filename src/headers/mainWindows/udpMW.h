@@ -6,6 +6,10 @@
 
 #include "Logger.h"
 
+#ifndef _WIN32
+#include "Buzz.h"
+#endif
+
 namespace Ui
 {
     class udpMW;
@@ -32,6 +36,10 @@ private:
     Ui::udpMW *ui;
 
     QUdpSocket *udpsocket;
+
+#ifndef _WIN32
+    Buzz *buzz;
+#endif
 };
 
 #endif // UDPMW_H

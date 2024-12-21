@@ -6,3 +6,5 @@ build/*
 .qmake.stash
 iams
 Makefile
+*.o
+*.h

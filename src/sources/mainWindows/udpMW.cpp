@@ -9,11 +9,23 @@ udpMW::udpMW(QWidget *parent) : QMainWindow(parent),
     udpsocket = new QUdpSocket(this);
 
     connect(udpsocket, &QUdpSocket::readyRead, this, &udpMW::on_readData);
+
+#ifndef _WIN32
+    Log() << "new Buzz";
+    buzz = new Buzz();
+#endif
 }
 
 udpMW::~udpMW()
 {
     delete ui;
+
+    udpsocket->close();
+    delete udpsocket;
+
+#ifndef _WIN32
+    delete buzz;
+#endif
 }
 
 void udpMW::on_backButton_clicked()
@@ -66,6 +78,22 @@ void udpMW::on_readData()
     Log() << "receive:" << datagram;
     ui->recvPlainTextEdit->appendPlainText(
         QString("[%1:%2] %3").arg(sender.toString()).arg(senderPort).arg(QString(datagram)));
+
+#ifndef _WIN32
+    // 调用 buzz 函数
+    Log() << "read buzz signal";
+    if (QString(datagram) == "buzz on")
+    {
+        Log() << "buzz on";
+        buzz->on();
+    }
+    else if (QString(datagram) == "buzz off")
+    {
+        Log() << "buzz off";
+        buzz->off();
+    }
+
+#endif
 }
 
 void udpMW::on_sendButton_clicked()

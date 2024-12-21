@@ -14,7 +14,8 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 SOURCES += \
     $$files($$PWD/src/sources/*.cpp) \
     $$files($$PWD/src/sources/mainWindows/*.cpp) \
-    $$files($$PWD/src/utils/*.cpp)
+    $$files($$PWD/src/utils/*.cpp) \
+    $$files($$PWD/src/hardware/*.cpp)
 
 # 自动包含 src 目录下的所有头文件
 HEADERS += \
@@ -24,7 +25,8 @@ HEADERS += \
 # 添加头文件路径
 INCLUDEPATH += $$PWD/src/headers \
     $$PWD/src/headers/mainWindows \
-    $$PWD/src/utils
+    $$PWD/src/utils \
+    $$PWD/src/hardware
 
 # 指定 UI 文件路径
 FORMS += \
@@ -49,5 +51,3 @@ QT += network
 # 指定静态库编译
 CONFIG += static
 
-# 添加串口模块
-QT += serialport
