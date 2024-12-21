@@ -7,7 +7,7 @@
 #include <QJsonArray>
 
 #include "HttpManager.h"
-#include <QDebug>
+#include "SystemLogger.h"
 #include "byteToJsonString.h"
 
 namespace Ui

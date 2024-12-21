@@ -3,3 +3,6 @@ iams.pro.user
 
 # 忽略build目录
 build/*
+.qmake.stash
+iams
+Makefile

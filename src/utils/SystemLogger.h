@@ -77,8 +77,8 @@ public:
     }
     else
     {
-      // 对于无法直接转换为QString的类型，使用qDebug()输出并转换为QString
-      qDebug() << "[SystemLog] ：" << value;
+      // 对于无法直接转换为QString的类型，使用Log()输出并转换为QString
+      qDebug() << "[SystemLogger not support]：" << value;
     }
 
     m_message = m_message.isEmpty() ? strValue : m_message + " " + strValue;
@@ -92,9 +92,17 @@ private:
   QString m_message;  ///< 累积的日志消息
 };
 
+#endif // SYSTEMLOG_H
+
 /**
  * @brief 日志宏,用于简化日志调用
  */
+#ifdef _WIN32
+
+#define Log(...) qDebug(__VA_ARGS__)
+
+#else
+
 #define Log(...) SystemLogger(__FILE__, __LINE__) << (QString(__VA_ARGS__).isEmpty() ? "" : QString(__VA_ARGS__))
 
-#endif // SYSTEMLOG_H
+#endif

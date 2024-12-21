@@ -1,5 +1,5 @@
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QDebug>
+#include "SystemLogger.h"
 
 QString byteToJsonString(QByteArray data);

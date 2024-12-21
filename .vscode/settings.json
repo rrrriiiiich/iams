@@ -7,6 +7,10 @@
     "qjsondocument": "cpp",
     "cmath": "cpp",
     "qmainwindow": "cpp",
-    "qdebug": "cpp"
+    "qdebug": "cpp",
+    "fstream": "cpp",
+    "qserialportinfo": "cpp",
+    "qapplication": "cpp",
+    "qjsonobject": "cpp"
   }
 }

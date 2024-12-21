@@ -18,7 +18,7 @@ QList<availableServerAddress> getAvailableNetworkAddresses()
       QHostAddress address = entry.ip();
       if (!address.isNull())
       {
-        // qDebug() << interface.humanReadableName() << " - Address:" << address.toString();
+        // Log() << interface.humanReadableName() << " - Address:" << address.toString();
         addresses.append({interface.humanReadableName(), address});
       }
     }

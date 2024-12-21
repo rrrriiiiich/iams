@@ -5,7 +5,7 @@ HttpManager::HttpManager()
   manager = new QNetworkAccessManager();
 
   // 打印支持的网络请求
-  qDebug() << "Supported request methods:" << manager->supportedSchemes().join(", ");
+  Log() << "Supported request methods:" << manager->supportedSchemes().join(", ");
 }
 
 HttpManager::~HttpManager()
@@ -19,15 +19,15 @@ HttpManager::~HttpManager()
 
 QNetworkReply *HttpManager::send(QUrl url, const requestOptions &options)
 {
-  qDebug() << "Sending request to:" << url.toString();
+  Log() << "Sending request to:" << url.toString();
   QNetworkRequest request;
   request.setUrl(url);
 
   // 解析 https 链接
-  QSslConfiguration cfg = request.sslConfiguration();
-  cfg.setPeerVerifyMode(QSslSocket::VerifyNone);
-  cfg.setProtocol(QSsl::AnyProtocol);
-  request.setSslConfiguration(cfg);
+  // QSslConfiguration cfg = request.sslConfiguration();
+  // cfg.setPeerVerifyMode(QSslSocket::VerifyNone);
+  // cfg.setProtocol(QSsl::AnyProtocol);
+  // request.setSslConfiguration(cfg);
 
   setContentTypeHeader(request, options.contentType);
 
@@ -42,7 +42,7 @@ QNetworkReply *HttpManager::send(QUrl url, const requestOptions &options)
     // reply = manager->post(request, options.body);
     break;
   default:
-    qDebug() << "method: Invalid method!";
+    Log() << "method: Invalid method!";
     break;
   }
 
@@ -62,7 +62,7 @@ void HttpManager::setContentTypeHeader(QNetworkRequest &request, HttpContentType
     request.setHeader(QNetworkRequest::ContentTypeHeader, "image/png");
     break;
   default:
-    qDebug() << "setContentTypeHeader: Invalid content type!";
+    Log() << "setContentTypeHeader: Invalid content type!";
     break;
   }
 }
@@ -80,9 +80,9 @@ void HttpManager::saveImageToFile(QNetworkReply *reply, const QString &filename)
   if (file.open(QIODevice::WriteOnly))
   {
     // 打印图片的fileName
-    qDebug() << "fileName: " << reply->request().url().fileName();
+    Log() << "fileName: " << reply->request().url().fileName();
     file.write(reply->readAll());
     file.close();
-    qDebug() << "file saved to:" << filename;
+    Log() << "file saved to:" << filename;
   }
 }

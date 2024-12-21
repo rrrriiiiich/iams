@@ -48,3 +48,6 @@ QT += network
 
 # 指定静态库编译
 CONFIG += static
+
+# 添加串口模块
+QT += serialport

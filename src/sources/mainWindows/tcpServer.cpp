@@ -18,7 +18,7 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
     // 将getAvailableNetworkAddresses返回的地址放到下拉框中
     for (const availableServerAddress &address : getAvailableNetworkAddresses())
     {
-        // qDebug() << address.name << ":" << address.address.toString();
+        // Log() << address.name << ":" << address.address.toString();
         ui->addressComboBox->addItem(address.name + ": " + address.address.toString(), QVariant::fromValue(address));
     }
 
@@ -48,28 +48,28 @@ void tcpServer::on_listenButton_clicked()
         address = ui->addressComboBox->itemData(0).value<availableServerAddress>().address;
     }
 
-    qDebug() << "address:" << address.toString();
+    Log() << "address:" << address.toString();
     qtcpServer->listen(address, ui->portEdit->text().toInt());
     if (qtcpServer->isListening())
     {
-        qDebug() << "listen success";
+        Log() << "listen success";
 
         // 获取本地地址和端口
         QString localAddress = qtcpServer->serverAddress().toString();
         quint16 localPort = qtcpServer->serverPort();
 
-        qDebug() << "服务器实际监听地址:" << localAddress;
-        qDebug() << "服务器实际监听端口:" << localPort;
+        Log() << "服务器实际监听地址:" << localAddress;
+        Log() << "服务器实际监听端口:" << localPort;
     }
     else
     {
-        qDebug() << "listen fail";
+        Log() << "listen fail";
     }
 }
 
 void tcpServer::on_newConnection()
 {
-    qDebug() << "new connection";
+    Log() << "new connection";
 
     qtcpSocket = qtcpServer->nextPendingConnection();
 
@@ -80,14 +80,14 @@ void tcpServer::readData()
 {
     // 获取数据
     QString data = QString::fromUtf8(qtcpSocket->readAll());
-    qDebug() << "read: " << data;
+    Log() << "read: " << data;
     ui->recvTextEdit->appendPlainText(data);
 }
 
 void tcpServer::on_sendButton_clicked()
 {
     QString data = ui->sendPlainTextEdit->toPlainText();
-    qDebug() << "send: " << data;
+    Log() << "send: " << data;
     qtcpSocket->write(data.toUtf8());
 }
 
