@@ -2,15 +2,15 @@
 
 QString byteToJsonString(QByteArray data)
 {
-  QString result;
+  QString result = "transfer failed!";
   QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
   if (!jsonDoc.isNull() && jsonDoc.isObject())
   {
     result = QString::fromUtf8(jsonDoc.toJson());
-    return result;
   }
   else
   {
     SYSTEMLog() << "Failed to parse !";
   }
+  return result;
 }
