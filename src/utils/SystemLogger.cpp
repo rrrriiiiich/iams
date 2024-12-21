@@ -1,3 +1,5 @@
+// !!! 废弃 原生qDebug已经实现了很多功能 仅用作学习
+
 #include "SystemLogger.h"
 
 void log(const QString &message, const char *file, int line)

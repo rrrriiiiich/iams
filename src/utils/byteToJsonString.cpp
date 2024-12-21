@@ -10,7 +10,7 @@ QString byteToJsonString(QByteArray data)
   }
   else
   {
-    Log() << "Failed to parse !";
+    qDebug() << "Failed to parse !";
   }
   return result;
 }

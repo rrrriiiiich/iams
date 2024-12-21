@@ -2,7 +2,7 @@
 #define DASHBOARD_H
 
 #include <QMainWindow>
-#include "SystemLogger.h"
+#include <QDebug>
 
 namespace Ui
 {

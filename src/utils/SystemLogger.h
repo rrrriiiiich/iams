@@ -1,3 +1,5 @@
+// !!! 废弃 原生qDebug已经实现了很多功能 仅用作学习
+
 #ifndef SYSTEMLOG_H
 #define SYSTEMLOG_H
 

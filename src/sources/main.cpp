@@ -1,4 +1,5 @@
 #include "iams.h"
+#include <QDebug>
 
 #include <QApplication>
 // #pragma comment(lib, "user32.lib")
@@ -11,6 +12,10 @@
  */
 int main(int argc, char *argv[])
 {
+
+    // 设置qDebug的输出格式
+    qSetMessagePattern("[%{file}](%{function}:%{line}): \n  %{message}");
+
     // 创建应用程序对象
     QApplication a(argc, argv);
 

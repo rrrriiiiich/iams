@@ -56,11 +56,11 @@ void tcpClient::on_connectButton_clicked()
     // 如果连接成功 打印连接成功信息
     if (qtcpSocket->waitForConnected(1000))
     {
-        Log() << "connect to host: " << address << ":" << port;
+        qDebug() << "connect to host: " << address << ":" << port;
     }
     else
     {
-        Log() << "connect to host fail";
+        qDebug() << "connect to host fail";
     }
 }
 
@@ -69,7 +69,7 @@ void tcpClient::on_sendButton_clicked()
     // 发送数据
     QString data = ui->sendEdit->text().trimmed();
     qtcpSocket->write(data.toUtf8());
-    Log() << "send: " << data;
+    qDebug() << "send: " << data;
 }
 
 void tcpClient::readData()
@@ -77,5 +77,5 @@ void tcpClient::readData()
     // ui->recvLabel->setText(tcpSocket->readAll());
     QString data = QString::fromUtf8(qtcpSocket->readAll());
     ui->recvPlainTextEdit->appendPlainText(data);
-    Log() << "read: " << data;
+    qDebug() << "read: " << data;
 }

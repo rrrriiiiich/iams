@@ -5,7 +5,7 @@ HttpManager::HttpManager()
   manager = new QNetworkAccessManager();
 
   // 打印支持的网络请求
-  Log() << "Supported request methods:" << manager->supportedSchemes().join(", ");
+  qDebug() << "Supported request methods:" << manager->supportedSchemes().join(", ");
 }
 
 HttpManager::~HttpManager()
@@ -19,7 +19,7 @@ HttpManager::~HttpManager()
 
 QNetworkReply *HttpManager::send(QUrl url, const requestOptions &options)
 {
-  Log() << "Sending request to:" << url.toString();
+  qDebug() << "Sending request to:" << url.toString();
   QNetworkRequest request;
   request.setUrl(url);
 
@@ -42,7 +42,7 @@ QNetworkReply *HttpManager::send(QUrl url, const requestOptions &options)
     // reply = manager->post(request, options.body);
     break;
   default:
-    Log() << "method: Invalid method!";
+    qDebug() << "method: Invalid method!";
     break;
   }
 
@@ -62,7 +62,7 @@ void HttpManager::setContentTypeHeader(QNetworkRequest &request, HttpContentType
     request.setHeader(QNetworkRequest::ContentTypeHeader, "image/png");
     break;
   default:
-    Log() << "setContentTypeHeader: Invalid content type!";
+    qDebug() << "setContentTypeHeader: Invalid content type!";
     break;
   }
 }
@@ -80,9 +80,9 @@ void HttpManager::saveImageToFile(QNetworkReply *reply, const QString &filename)
   if (file.open(QIODevice::WriteOnly))
   {
     // 打印图片的fileName
-    Log() << "fileName: " << reply->request().url().fileName();
+    qDebug() << "fileName: " << reply->request().url().fileName();
     file.write(reply->readAll());
     file.close();
-    Log() << "file saved to:" << filename;
+    qDebug() << "file saved to:" << filename;
   }
 }

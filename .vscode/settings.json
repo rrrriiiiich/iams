@@ -6,6 +6,7 @@
     "qnetworkinterface": "cpp",
     "qjsondocument": "cpp",
     "cmath": "cpp",
-    "qmainwindow": "cpp"
+    "qmainwindow": "cpp",
+    "qdebug": "cpp"
   }
 }

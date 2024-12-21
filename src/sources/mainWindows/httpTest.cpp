@@ -16,10 +16,10 @@ httpTest::~httpTest()
 
 void httpTest::on_requestButton_clicked()
 {
-    Log() << "on_requestButton_clicked";
+    qDebug() << "on_requestButton_clicked";
     // 获取url
     QUrl url = ui->urlEdit->text();
-    Log() << "url: " << url;
+    qDebug() << "url: " << url;
     // 发送请求获取响应
     QNetworkReply *reply = httpManager->send(url, {HttpMethod::GET, HttpContentType::IMAGE});
 
@@ -32,7 +32,7 @@ void httpTest::on_requestButton_clicked()
     }
     else
     {
-        Log() << "Error:" << reply->errorString();
+        qDebug() << "Error:" << reply->errorString();
     }
 
     reply->deleteLater();
@@ -42,7 +42,7 @@ void httpTest::on_requestButton_clicked()
     if (reply2->error() == QNetworkReply::NoError)
     {
         QString data = byteToJsonString(reply2->readAll());
-        Log() << "data:" << data;
+        qDebug() << "data:" << data;
         ui->showAreaLabel->setText(data);
     }
     else
@@ -55,7 +55,7 @@ void httpTest::on_requestButton_clicked()
 
 void httpTest::on_showButton_clicked()
 {
-    Log() << "on_showButton_clicked";
+    qDebug() << "on_showButton_clicked";
     QImage image("test.png");
     ui->showAreaLabel->setPixmap(QPixmap::fromImage(image));
 }
