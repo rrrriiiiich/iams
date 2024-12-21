@@ -53,7 +53,7 @@ void iams::on_login_clicked()
     // 添加输入验证，避免空用户名或密码
     if (username.isEmpty() || password.isEmpty())
     {
-        SYSTEMLog() << "login failed: username or password is empty";
+        Log() << "login failed: username or password is empty";
         return;
     }
 
@@ -63,7 +63,7 @@ void iams::on_login_clicked()
 
     if (username == VALID_USERNAME && password == VALID_PASSWORD)
     {
-        SYSTEMLog() << "login success";
+        Log() << "login success";
 
         // 先显示新窗口再隐藏当前窗口，避免界面闪烁
         Dashboard->show();
@@ -71,7 +71,7 @@ void iams::on_login_clicked()
     }
     else
     {
-        SYSTEMLog() << "login failed: username or password is wrong";
+        Log() << "login failed: username or password is wrong";
     }
 }
 

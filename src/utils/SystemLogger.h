@@ -93,6 +93,6 @@ private:
 /**
  * @brief 日志宏,用于简化日志调用
  */
-#define SYSTEMLog(...) SystemLogger(__FILE__, __LINE__) << (QString(__VA_ARGS__).isEmpty() ? "" : QString(__VA_ARGS__))
+#define Log(...) SystemLogger(__FILE__, __LINE__) << (QString(__VA_ARGS__).isEmpty() ? "" : QString(__VA_ARGS__))
 
 #endif // SYSTEMLOG_H
