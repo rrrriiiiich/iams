@@ -7,7 +7,10 @@
 #include "Logger.h"
 
 #ifndef _WIN32
+
 #include "Buzz.h"
+#include "Leds.h"
+
 #endif
 
 namespace Ui
@@ -39,6 +42,7 @@ private:
 
 #ifndef _WIN32
     Buzz *buzz;
+    Leds *leds;
 #endif
 };
 

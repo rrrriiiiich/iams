@@ -7,4 +7,3 @@ build/*
 iams
 Makefile
 *.o
-*.h

@@ -13,6 +13,9 @@ udpMW::udpMW(QWidget *parent) : QMainWindow(parent),
 #ifndef _WIN32
     Log() << "new Buzz";
     buzz = new Buzz();
+
+    Log() << "new Leds";
+    leds = new Leds();
 #endif
 }
 
@@ -25,6 +28,7 @@ udpMW::~udpMW()
 
 #ifndef _WIN32
     delete buzz;
+    delete leds;
 #endif
 }
 
@@ -92,6 +96,39 @@ void udpMW::on_readData()
         buzz->off();
     }
 
+    // 调用 leds 函数
+    if (QString(datagram) == "led1 on")
+    {
+        leds->on(LED1);
+    }
+    else if (QString(datagram) == "led1 off")
+    {
+        leds->off(LED1);
+    }
+    else if (QString(datagram) == "led2 on")
+    {
+        leds->on(LED2);
+    }
+    else if (QString(datagram) == "led2 off")
+    {
+        leds->off(LED2);
+    }
+    else if (QString(datagram) == "led3 on")
+    {
+        leds->on(LED3);
+    }
+    else if (QString(datagram) == "led3 off")
+    {
+        leds->off(LED3);
+    }
+    else if (QString(datagram) == "led4 on")
+    {
+        leds->on(LED4);
+    }
+    else if (QString(datagram) == "led4 off")
+    {
+        leds->off(LED4);
+    }
 #endif
 }
 

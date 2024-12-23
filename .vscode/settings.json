@@ -11,6 +11,9 @@
     "fstream": "cpp",
     "qserialportinfo": "cpp",
     "qapplication": "cpp",
-    "qjsonobject": "cpp"
+    "qjsonobject": "cpp",
+    "cerrno": "cpp",
+    "functional": "cpp",
+    "*.tcc": "cpp"
   }
 }
