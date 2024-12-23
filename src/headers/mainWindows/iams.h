@@ -44,13 +44,7 @@ private slots:
      */
     void on_login_clicked();
 
-    void on_tcpcServerBt_clicked();
-
-    void on_tcpClientBt_clicked();
-
-    void on_udpTestBt_clicked();
-
-    void on_httpTestButton_clicked();
+    void on_goToTestButton_clicked();
 
 private:
     /**

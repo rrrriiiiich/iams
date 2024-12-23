@@ -26,6 +26,15 @@ iams::iams(QWidget *parent)
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
     ui->passwordLineEdit->setText("123456");
+
+    // 设置协议选择器内容
+    ui->protocolComboBox->addItem("TCP 服务器");
+    ui->protocolComboBox->addItem("TCP 客户端");
+    ui->protocolComboBox->addItem("UDP 测试");
+    ui->protocolComboBox->addItem("HTTP 测试");
+
+    // 设置协议选择器默认选项
+    ui->protocolComboBox->setCurrentIndex(0);
 }
 
 /**
@@ -75,22 +84,26 @@ void iams::on_login_clicked()
     }
 }
 
-void iams::on_tcpcServerBt_clicked()
+void iams::on_goToTestButton_clicked()
 {
-    TcpServer->show();
-}
+    QString protocol = ui->protocolComboBox->currentText();
 
-void iams::on_tcpClientBt_clicked()
-{
-    TcpClient->show();
-}
+    Log() << "protocol:" << protocol;
 
-void iams::on_udpTestBt_clicked()
-{
-    UdpMW->show();
-}
-
-void iams::on_httpTestButton_clicked()
-{
-    HttpTest->show();
+    if (protocol == "TCP 服务器")
+    {
+        TcpServer->show();
+    }
+    else if (protocol == "TCP 客户端")
+    {
+        TcpClient->show();
+    }
+    else if (protocol == "UDP 测试")
+    {
+        UdpMW->show();
+    }
+    else if (protocol == "HTTP 测试")
+    {
+        HttpTest->show();
+    }
 }
