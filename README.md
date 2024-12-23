@@ -24,9 +24,13 @@
 3. 运行
    - 在 QtCreator 中打开 iams.pro 文件直接运行
    - 在 VSCode 中打开
-     1. 需要修改 [c_cpp_properties.json](.vscode/c_cpp_properties.json) 文件，将 Qt 的路径替换为你的 Qt 路径
-     2. 需要修改 [launch.json](.vscode/launch.json) 文件，将 Qt 的路径替换为你的 Qt 路径
-     3. 之后选择 终端 -> 运行任务 选择要运行的任务即可，任务定义在 [tasks.json](.vscode/tasks.json) 文件中
+     1. 需要先添加环境变量 
+       - D:\Qt\Qt5.14.2\5.14.2\mingw73_64\bin
+       - D:\Qt\Qt5.14.2\Tools\mingw730_64\bin
+      将以上路径替换为你的 Qt 路径
+     2. 需要修改 [c_cpp_properties.json](.vscode/c_cpp_properties.json) 文件，将 Qt 的路径替换为你的 Qt 路径
+     3. 需要修改 [launch.json](.vscode/launch.json) 文件，将 Qt 的路径替换为你的 Qt 路径
+     4. 之后选择 终端 -> 运行任务 选择要运行的任务即可，任务定义在 [tasks.json](.vscode/tasks.json) 文件中
 
 ### 许可证
 
