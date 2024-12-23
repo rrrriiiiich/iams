@@ -19,13 +19,21 @@ Buzz::~Buzz()
 void Buzz::on()
 {
   Log() << "on";
-  ioctl(buzz_fd, BUZZ_ON);
+  ret = ioctl(buzz_fd, BUZZ_ON);
+  if (ret == -1)
+  {
+    Log() << "ioctl BUZZ_ON failed";
+  }
 }
 
 void Buzz::off()
 {
   Log() << "off";
-  ioctl(buzz_fd, BUZZ_OFF);
+  ret = ioctl(buzz_fd, BUZZ_OFF);
+  if (ret == -1)
+  {
+    Log() << "ioctl BUZZ_OFF failed";
+  }
 }
 
 #else
