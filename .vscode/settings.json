@@ -20,5 +20,7 @@
     "qmessagebox": "cpp",
     "qserialport": "cpp",
     "qmovie": "cpp"
-  }
+  },
+  // 设置默认shell
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
 }

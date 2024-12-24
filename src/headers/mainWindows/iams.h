@@ -5,6 +5,7 @@
 #include "dashboard.h"
 #include "httpTest.h"
 #include "Logger.h"
+#include <QMessageBox>
 #ifndef _WIN32
 #include "serialPortTest.h"
 #endif // _WIN32
