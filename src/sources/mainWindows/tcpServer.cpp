@@ -26,6 +26,9 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
     // 将addressComboBox位置替换为availNwkAddrCB
     ui->gridLayout->replaceWidget(ui->addressComboBox, availNwkAddrCB);
     ui->addressComboBox->setVisible(false);
+
+    // 设置界面最大尺寸
+    this->setMaximumSize(QSize(800, 480));
 }
 
 tcpServer::~tcpServer()

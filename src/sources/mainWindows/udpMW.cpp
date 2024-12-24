@@ -15,6 +15,9 @@ udpMW::udpMW(QWidget *parent) : QMainWindow(parent),
     ui->gridLayout->replaceWidget(ui->addressComboBox, availNwkAddrCB);
     ui->addressComboBox->setVisible(false);
 
+    // 设置界面最大尺寸
+    this->setMaximumSize(QSize(800, 480));
+
 #ifndef _WIN32
     Log()
         << "new Buzz";

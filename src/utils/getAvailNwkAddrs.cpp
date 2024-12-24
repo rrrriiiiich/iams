@@ -12,6 +12,10 @@ QList<AvailNwkAddr> getAvailNwkAddrs()
     if (!interface.isValid() || interface.flags().testFlag(QNetworkInterface::IsLoopBack))
       continue;
 
+    // 过滤掉IPv6地址
+    if (interface.addressEntries().first().ip().protocol() == QAbstractSocket::IPv6Protocol)
+      continue;
+
     QList<QNetworkAddressEntry> entries = interface.addressEntries();
     for (const QNetworkAddressEntry &entry : entries)
     {

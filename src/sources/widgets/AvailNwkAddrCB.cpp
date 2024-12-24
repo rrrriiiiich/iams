@@ -21,6 +21,9 @@ AvailNwkAddrCB::AvailNwkAddrCB(QWidget *parent) : QWidget(parent),
     comboBox->setCurrentIndex(0);
     horizontalLayout->addWidget(comboBox);
 
+    comboBox->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+    // 设置宽度策略
+
     // 连接信号和槽
     connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this,
             [=](int index)
