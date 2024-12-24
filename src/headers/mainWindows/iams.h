@@ -80,5 +80,5 @@ private:
     /**
      * @brief   指向 serialPortTest 类的指针，用于管理和操作 serialPortTest 窗口
      */
-    // serialPortTest *SerialPortTest;
+    serialPortTest *SerialPortTest;
 };
