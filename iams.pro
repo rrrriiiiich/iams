@@ -55,3 +55,7 @@ QT += network
 # 指定静态库编译
 CONFIG += static
 
+#开启串口支持
+QT += serialport
+
+

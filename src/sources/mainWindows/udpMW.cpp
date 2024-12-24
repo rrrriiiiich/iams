@@ -58,7 +58,7 @@ void udpMW::on_bindButton_clicked()
     // 绑定
     AvailNwkAddr addr = availNwkAddrCB->getSelectedAddress();
     udpsocket->bind(QHostAddress(addr.address), ui->portEdit->text().toInt());
-    Log() << "bind: " << addr.address << ":" << ui->portEdit->text();
+    Log() << "bind: " << addr.address.toString() << ":" << ui->portEdit->text();
     ui->recvPlainTextEdit->appendPlainText(QString("[%1:%2] %3").arg(addr.address.toString()).arg(ui->portEdit->text()).arg("bind success"));
 }
 

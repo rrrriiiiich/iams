@@ -16,6 +16,8 @@
     "functional": "cpp",
     "*.tcc": "cpp",
     "typeinfo": "cpp",
-    "new": "cpp"
+    "new": "cpp",
+    "qmessagebox": "cpp",
+    "qserialport": "cpp"
   }
 }

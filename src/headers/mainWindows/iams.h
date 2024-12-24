@@ -5,6 +5,7 @@
 #include "dashboard.h"
 #include "httpTest.h"
 #include "Logger.h"
+#include "serialPortTest.h"
 
 #include <QMainWindow>
 #include <QMovie>
@@ -75,4 +76,9 @@ private:
      * @brief   指向 httpTest 类的指针，用于管理和操作 httpTest 窗口
      */
     httpTest *HttpTest;
+
+    /**
+     * @brief   指向 serialPortTest 类的指针，用于管理和操作 serialPortTest 窗口
+     */
+    serialPortTest *SerialPortTest;
 };

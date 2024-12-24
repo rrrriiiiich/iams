@@ -19,6 +19,7 @@ Buzz::~Buzz()
 void Buzz::on()
 {
   Log() << "on";
+  int ret = -1;
   ret = ioctl(buzz_fd, BUZZ_ON);
   if (ret == -1)
   {
@@ -29,6 +30,7 @@ void Buzz::on()
 void Buzz::off()
 {
   Log() << "off";
+  int ret = -1;
   ret = ioctl(buzz_fd, BUZZ_OFF);
   if (ret == -1)
   {

@@ -22,6 +22,7 @@ iams::iams(QWidget *parent)
     UdpMW = new udpMW(this);
     Dashboard = new dashboard(this);
     HttpTest = new httpTest(this);
+    SerialPortTest = new serialPortTest(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
@@ -32,6 +33,7 @@ iams::iams(QWidget *parent)
     ui->protocolComboBox->addItem("TCP 客户端");
     ui->protocolComboBox->addItem("UDP 测试");
     ui->protocolComboBox->addItem("HTTP 测试");
+    ui->protocolComboBox->addItem("串口测试");
 
     // 设置协议选择器默认选项
     ui->protocolComboBox->setCurrentIndex(0);
@@ -105,5 +107,9 @@ void iams::on_goToTestButton_clicked()
     else if (protocol == "HTTP 测试")
     {
         HttpTest->show();
+    }
+    else if (protocol == "串口测试")
+    {
+        SerialPortTest->show();
     }
 }

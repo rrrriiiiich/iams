@@ -29,7 +29,7 @@ void Leds::on(int led_command)
     ioctl(leds_fd, LED4, LED_ON);
   }
 
-  ret = ioctl(leds_fd, led_command, LED_ON);
+  int ret = ioctl(leds_fd, led_command, LED_ON);
   if (ret == -1)
   {
     Log() << "ioctl " << led_command << " failed";
@@ -47,7 +47,7 @@ void Leds::off(int led_command)
     ioctl(leds_fd, LED3, LED_OFF);
     ioctl(leds_fd, LED4, LED_OFF);
   }
-  ret = ioctl(leds_fd, led_command, LED_OFF); // 1灯灭
+  int ret = ioctl(leds_fd, led_command, LED_OFF); // 1灯灭
   if (ret == -1)
   {
     Log() << "ioctl " << led_command << " failed";
