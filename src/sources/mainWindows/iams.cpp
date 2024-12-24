@@ -22,7 +22,7 @@ iams::iams(QWidget *parent)
     UdpMW = new udpMW(this);
     Dashboard = new dashboard(this);
     HttpTest = new httpTest(this);
-    SerialPortTest = new serialPortTest(this);
+    // SerialPortTest = new serialPortTest(this);
 
     // 默认设置用户名和密码
     ui->usernameLineEdit->setText("admin");
@@ -108,8 +108,8 @@ void iams::on_goToTestButton_clicked()
     {
         HttpTest->show();
     }
-    else if (protocol == "串口测试")
-    {
-        SerialPortTest->show();
-    }
+    // else if (protocol == "串口测试")
+    // {
+    //     SerialPortTest->show();
+    // }
 }
