@@ -10,8 +10,14 @@ udpMW::udpMW(QWidget *parent) : QMainWindow(parent),
 
     connect(udpsocket, &QUdpSocket::readyRead, this, &udpMW::on_readData);
 
+    availNwkAddrCB = new AvailNwkAddrCB(this);
+    // 将addressComboBox位置替换为availNwkAddrCB
+    ui->gridLayout->replaceWidget(ui->addressComboBox, availNwkAddrCB);
+    ui->addressComboBox->setVisible(false);
+
 #ifndef _WIN32
-    Log() << "new Buzz";
+    Log()
+        << "new Buzz";
     buzz = new Buzz();
 
     Log() << "new Leds";
@@ -47,9 +53,10 @@ void udpMW::on_bindButton_clicked()
     // 先解除绑定
     udpsocket->close();
     // 绑定
-    udpsocket->bind(QHostAddress(ui->addressEdit->text()), ui->portEdit->text().toInt());
-    Log() << "bind: " << ui->addressEdit->text() << ":" << ui->portEdit->text();
-    ui->recvPlainTextEdit->appendPlainText(QString("[%1:%2] %3").arg(ui->addressEdit->text()).arg(ui->portEdit->text()).arg("bind success"));
+    AvailNwkAddr addr = availNwkAddrCB->getSelectedAddress();
+    udpsocket->bind(QHostAddress(addr.address), ui->portEdit->text().toInt());
+    Log() << "bind: " << addr.address << ":" << ui->portEdit->text();
+    ui->recvPlainTextEdit->appendPlainText(QString("[%1:%2] %3").arg(addr.address.toString()).arg(ui->portEdit->text()).arg("bind success"));
 }
 
 void udpMW::on_readData()

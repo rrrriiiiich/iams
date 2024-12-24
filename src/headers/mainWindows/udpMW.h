@@ -5,6 +5,7 @@
 #include <QUdpSocket>
 
 #include "Logger.h"
+#include "AvailNwkAddrCB.h"
 
 #ifndef _WIN32
 
@@ -37,6 +38,8 @@ private slots:
 
 private:
     Ui::udpMW *ui;
+
+    AvailNwkAddrCB *availNwkAddrCB;
 
     QUdpSocket *udpsocket;
 

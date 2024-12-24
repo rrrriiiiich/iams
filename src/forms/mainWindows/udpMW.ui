@@ -48,20 +48,7 @@
     <item row="1" column="0">
      <layout class="QHBoxLayout" name="baseConfig">
       <item>
-       <widget class="QLineEdit" name="addressEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>192.168.0.153</string>
-        </property>
-        <property name="placeholderText">
-         <string>请输入正确ip地址</string>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="addressComboBox"/>
       </item>
       <item>
        <widget class="QLineEdit" name="portEdit">
