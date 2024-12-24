@@ -1,4 +1,4 @@
-#include "serialPortTest.h"
+﻿#include "serialPortTest.h"
 #include "ui_serialPortTest.h"
 
 serialPortTest::serialPortTest(QWidget *parent) : QMainWindow(parent),
@@ -14,7 +14,7 @@ serialPortTest::serialPortTest(QWidget *parent) : QMainWindow(parent),
     }
 
     // 创建串口对象，设置串口设备为/dev/ttySAC0
-    serialPort = new QSerialPort("/dev/ttySAC2", this);
+    serialPort = new QSerialPort(this);
     // 设置串口名称为/dev/ttySAC0
     serialPort->setPortName("/dev/ttySAC2");
     // 设置波特率为115200
@@ -46,11 +46,10 @@ serialPortTest::serialPortTest(QWidget *parent) : QMainWindow(parent),
 void serialPortTest::on_readyRead()
 {
     // 读取串口数据
-    QByteArray data = serialPort->readAll();
-    // 将数据转换为QString
-    QString str = QString(data);
-    Log() << serialPort->portName() << ": " << str;
-    ui->recvPlainTextEdit->appendPlainText(serialPort->portName() + ": " + str);
+    QString data = serialPort->readAll();
+    qDebug() << "recv: " << data;
+    Log() << serialPort->portName() << ": " << data;
+    ui->recvPlainTextEdit->appendPlainText(serialPort->portName() + ": " + data);
 }
 
 serialPortTest::~serialPortTest()
@@ -58,4 +57,38 @@ serialPortTest::~serialPortTest()
     delete ui;
     serialPort->close();
     delete serialPort;
+}
+
+void serialPortTest::on_sendButton_clicked()
+{
+    // 获取发送数据
+    Log() << "on_sendButton_clicked";
+    QString str = ui->sendLineEdit->text().trimmed();
+    serialPort->write(str.toUtf8());
+    Log() << "send: " << str;
+}
+
+void serialPortTest::on_statusButton_clicked()
+{
+    // 获取状态
+    Log() << "on_statusButton_clicked";
+    serialPort->write("AT\r\n");
+}
+
+void serialPortTest::on_setNameButton_clicked()
+{
+    Log() << "on_setNameButton_clicked";
+    serialPort->write("AT+NAMEJinJieBeWater\r\n");
+}
+
+void serialPortTest::on_getPwdButton_clicked()
+{
+    Log() << "on_getPwdButton_clicked";
+    serialPort->write("AT+PIN\r\n");
+}
+
+void serialPortTest::on_setPwdButton_clicked()
+{
+    Log() << "on_setPwdButton_clicked";
+    serialPort->write("AT+PWD123456\r\n");
 }

@@ -24,6 +24,16 @@ public:
 private slots:
   void on_readyRead();
 
+  void on_sendButton_clicked();
+
+  void on_statusButton_clicked();
+
+  void on_setNameButton_clicked();
+
+  void on_getPwdButton_clicked();
+
+  void on_setPwdButton_clicked();
+
 private:
   Ui::serialPortTest *ui;
 

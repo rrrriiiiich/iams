@@ -33,7 +33,7 @@ iams::iams(QWidget *parent)
     ui->protocolComboBox->addItem("TCP 客户端");
     ui->protocolComboBox->addItem("UDP 测试");
     ui->protocolComboBox->addItem("HTTP 测试");
-    ui->protocolComboBox->addItem("串口测试");
+    ui->protocolComboBox->addItem("蓝牙串口测试");
 
     // 设置协议选择器默认选项
     ui->protocolComboBox->setCurrentIndex(0);
@@ -108,7 +108,7 @@ void iams::on_goToTestButton_clicked()
     {
         HttpTest->show();
     }
-    else if (protocol == "串口测试")
+    else if (protocol == "蓝牙串口测试")
     {
         SerialPortTest->show();
     }
