@@ -12,7 +12,7 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
-      "miDebuggerPath": "D:/Qt/Qt5.14.2/Tools/mingw730_64/bin/gdb.exe",
+      "miDebuggerPath": "D:/shixun/qt/Tools/mingw730_64/bin/gcc.exe",
       "setupCommands": [
         {
           "description": "为 gdb 启用整齐打印",
