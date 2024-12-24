@@ -18,6 +18,7 @@
     "typeinfo": "cpp",
     "new": "cpp",
     "qmessagebox": "cpp",
-    "qserialport": "cpp"
+    "qserialport": "cpp",
+    "qmovie": "cpp"
   }
 }

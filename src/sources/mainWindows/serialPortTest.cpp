@@ -92,3 +92,8 @@ void serialPortTest::on_setPwdButton_clicked()
     Log() << "on_setPwdButton_clicked";
     serialPort->write("AT+PWD123456\r\n");
 }
+
+void serialPortTest::on_backButton_clicked()
+{
+    this->close();
+}

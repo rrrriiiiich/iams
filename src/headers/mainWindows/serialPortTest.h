@@ -34,6 +34,8 @@ private slots:
 
   void on_setPwdButton_clicked();
 
+  void on_backButton_clicked();
+
 private:
   Ui::serialPortTest *ui;
 

@@ -5,7 +5,9 @@
 #include "dashboard.h"
 #include "httpTest.h"
 #include "Logger.h"
+#ifndef _WIN32
 #include "serialPortTest.h"
+#endif // _WIN32
 
 #include <QMainWindow>
 #include <QMovie>
@@ -77,8 +79,10 @@ private:
      */
     httpTest *HttpTest;
 
+#ifndef _WIN32
     /**
      * @brief   指向 serialPortTest 类的指针，用于管理和操作 serialPortTest 窗口
      */
     serialPortTest *SerialPortTest;
+#endif // _WIN32
 };
