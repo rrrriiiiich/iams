@@ -1,5 +1,4 @@
 #pragma once
-#include "ui_iams.h"
 #include "tcpClient.h"
 #include "tcpServer.h"
 #include "udpMW.h"

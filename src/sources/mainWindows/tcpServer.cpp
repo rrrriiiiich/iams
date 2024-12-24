@@ -12,17 +12,8 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
     // 默认设置发送内容
     ui->sendPlainTextEdit->setPlainText("你好 客户端");
 
-    // 添加空选项到下拉框
-    availableServerAddress allAddress;
-    allAddress.name = "所有地址";
-    allAddress.address = QHostAddress::Any;
-    ui->addressComboBox->addItem(allAddress.name + ": " + allAddress.address.toString(), QVariant::fromValue(allAddress));
-
-    // 设置下拉框默认选项
-    ui->addressComboBox->setCurrentIndex(0);
-
-    // 将getAvailableNetworkAddresses返回的地址放到下拉框中
-    for (const availableServerAddress &address : getAvailableNetworkAddresses())
+    // 将getAvailNwkAddrs返回的地址放到下拉框中
+    for (const AvailNwkAddr &address : getAvailNwkAddrs())
     {
         // Log() << address.name << ":" << address.address.toString();
         ui->addressComboBox->addItem(address.name + ": " + address.address.toString(), QVariant::fromValue(address));
@@ -30,6 +21,11 @@ tcpServer::tcpServer(QWidget *parent) : QMainWindow(parent),
 
     // 连接槽函数
     connect(qtcpServer, &QTcpServer::newConnection, this, &tcpServer::on_newConnection);
+
+    availNwkAddrCB = new AvailNwkAddrCB(this);
+    // 将addressComboBox位置替换为availNwkAddrCB
+    ui->gridLayout->replaceWidget(ui->addressComboBox, availNwkAddrCB);
+    ui->addressComboBox->setVisible(false);
 }
 
 tcpServer::~tcpServer()
@@ -46,9 +42,7 @@ void tcpServer::on_listenButton_clicked()
     }
 
     // 获取下拉框中选中的地址
-    QHostAddress address = ui->addressComboBox->currentData().value<availableServerAddress>().address;
-
-    Log() << "address:" << address.toString();
+    QHostAddress address = availNwkAddrCB->getSelectedAddress().address;
     qtcpServer->listen(address, ui->portEdit->text().toInt());
     if (qtcpServer->isListening())
     {

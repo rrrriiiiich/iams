@@ -5,8 +5,9 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 // #include <QVariant>
-#include "getAvailableNetworkAddresses.h"
+#include "getAvailNwkAddrs.h"
 #include "Logger.h"
+#include "AvailNwkAddrCB.h"
 
 namespace Ui
 {
@@ -37,6 +38,8 @@ private:
 
     QTcpServer *qtcpServer;
     QTcpSocket *qtcpSocket;
+
+    AvailNwkAddrCB *availNwkAddrCB;
 };
 
 #endif // tcpServer_H

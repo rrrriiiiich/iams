@@ -1,9 +1,9 @@
-#include "getAvailableNetworkAddresses.h"
+#include "getAvailNwkAddrs.h"
 
-QList<availableServerAddress> getAvailableNetworkAddresses()
+QList<AvailNwkAddr> getAvailNwkAddrs()
 {
   // 定义结构体保存筛选后的结果
-  QList<availableServerAddress> addresses;
+  QList<AvailNwkAddr> addresses;
 
   QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
   for (const QNetworkInterface &interface : interfaces)
